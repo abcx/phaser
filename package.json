@@ -1,0 +1,19 @@
+{
+  "name": "phaser",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "dev": "parcel watch *.js",
+    "server-game": "browser-sync start --server --no-notify --files \".\"",
+    "editor": "parcel watch editor.js",
+    "server-editor": "browser-sync start --server --port 3001 --index editor.html --no-notify --files \"**/*.html, **/*.css, **/*.js\"",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "phaser": "^3.55.2"
+  }
+}

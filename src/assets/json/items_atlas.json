@@ -1,0 +1,788 @@
+{
+    "frames": [
+        {
+            "filename": "bomb",
+            "frame": {
+                "x": 0,
+                "y": 0,
+                "w": 70,
+                "h": 70
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "bombflash",
+            "frame": {
+                "x": 70,
+                "y": 0,
+                "w": 70,
+                "h": 70
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "bush",
+            "frame": {
+                "x": 140,
+                "y": 0,
+                "w": 70,
+                "h": 70
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "buttonblue",
+            "frame": {
+                "x": 210,
+                "y": 0,
+                "w": 70,
+                "h": 70
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "buttonblue_pressed",
+            "frame": {
+                "x": 280,
+                "y": 0,
+                "w": 70,
+                "h": 70
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "buttongreen",
+            "frame": {
+                "x": 350,
+                "y": 0,
+                "w": 70,
+                "h": 70
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "buttongreen_pressed",
+            "frame": {
+                "x": 420,
+                "y": 0,
+                "w": 70,
+                "h": 70
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "buttonred",
+            "frame": {
+                "x": 490,
+                "y": 0,
+                "w": 70,
+                "h": 70
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "buttonred_pressed",
+            "frame": {
+                "x": 0,
+                "y": 70,
+                "w": 70,
+                "h": 70
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "buttonyellow",
+            "frame": {
+                "x": 70,
+                "y": 70,
+                "w": 70,
+                "h": 70
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "buttonyellow_pressed",
+            "frame": {
+                "x": 140,
+                "y": 70,
+                "w": 70,
+                "h": 70
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "cactus",
+            "frame": {
+                "x": 210,
+                "y": 70,
+                "w": 70,
+                "h": 70
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "chain",
+            "frame": {
+                "x": 280,
+                "y": 70,
+                "w": 70,
+                "h": 70
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "cloud1",
+            "frame": {
+                "x": 350,
+                "y": 70,
+                "w": 128,
+                "h": 71
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "cloud2",
+            "frame": {
+                "x": 478,
+                "y": 70,
+                "w": 129,
+                "h": 71
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "cloud3",
+            "frame": {
+                "x": 607,
+                "y": 70,
+                "w": 129,
+                "h": 71
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "coinbronze",
+            "frame": {
+                "x": 0,
+                "y": 140,
+                "w": 70,
+                "h": 70
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "coingold",
+            "frame": {
+                "x": 70,
+                "y": 140,
+                "w": 70,
+                "h": 70
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "coinsilver",
+            "frame": {
+                "x": 140,
+                "y": 140,
+                "w": 70,
+                "h": 70
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "fireball",
+            "frame": {
+                "x": 210,
+                "y": 140,
+                "w": 70,
+                "h": 70
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "flagblue",
+            "frame": {
+                "x": 280,
+                "y": 140,
+                "w": 70,
+                "h": 70
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "flagblue2",
+            "frame": {
+                "x": 350,
+                "y": 141,
+                "w": 70,
+                "h": 70
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "flagbluehanging",
+            "frame": {
+                "x": 420,
+                "y": 141,
+                "w": 70,
+                "h": 70
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "flaggreen",
+            "frame": {
+                "x": 490,
+                "y": 141,
+                "w": 70,
+                "h": 70
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "flaggreen2",
+            "frame": {
+                "x": 0,
+                "y": 210,
+                "w": 70,
+                "h": 70
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "flaggreenhanging",
+            "frame": {
+                "x": 70,
+                "y": 210,
+                "w": 70,
+                "h": 70
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "flagred",
+            "frame": {
+                "x": 140,
+                "y": 210,
+                "w": 70,
+                "h": 70
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "flagred2",
+            "frame": {
+                "x": 210,
+                "y": 210,
+                "w": 70,
+                "h": 70
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "flagredhanging",
+            "frame": {
+                "x": 280,
+                "y": 210,
+                "w": 70,
+                "h": 70
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "flagyellow",
+            "frame": {
+                "x": 350,
+                "y": 211,
+                "w": 70,
+                "h": 70
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "flagyellow2",
+            "frame": {
+                "x": 420,
+                "y": 211,
+                "w": 70,
+                "h": 70
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "flagyellowhanging",
+            "frame": {
+                "x": 490,
+                "y": 211,
+                "w": 70,
+                "h": 70
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "gemblue",
+            "frame": {
+                "x": 0,
+                "y": 280,
+                "w": 70,
+                "h": 70
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "gemgreen",
+            "frame": {
+                "x": 70,
+                "y": 280,
+                "w": 70,
+                "h": 70
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "gemred",
+            "frame": {
+                "x": 140,
+                "y": 280,
+                "w": 70,
+                "h": 70
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "gemyellow",
+            "frame": {
+                "x": 210,
+                "y": 280,
+                "w": 70,
+                "h": 70
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "items_spritesheet",
+            "frame": {
+                "x": 280,
+                "y": 280,
+                "w": 576,
+                "h": 576
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "keyblue",
+            "frame": {
+                "x": 856,
+                "y": 281,
+                "w": 70,
+                "h": 70
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "keygreen",
+            "frame": {
+                "x": 926,
+                "y": 281,
+                "w": 70,
+                "h": 70
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "keyred",
+            "frame": {
+                "x": 996,
+                "y": 281,
+                "w": 70,
+                "h": 70
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "keyyellow",
+            "frame": {
+                "x": 0,
+                "y": 350,
+                "w": 70,
+                "h": 70
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "mushroombrown",
+            "frame": {
+                "x": 70,
+                "y": 350,
+                "w": 70,
+                "h": 70
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "mushroomred",
+            "frame": {
+                "x": 140,
+                "y": 350,
+                "w": 70,
+                "h": 70
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "particlebrick1a",
+            "frame": {
+                "x": 210,
+                "y": 350,
+                "w": 19,
+                "h": 14
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "particlebrick1b",
+            "frame": {
+                "x": 229,
+                "y": 856,
+                "w": 21,
+                "h": 21
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "particlebrick2a",
+            "frame": {
+                "x": 250,
+                "y": 351,
+                "w": 19,
+                "h": 14
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "particlebrick2b",
+            "frame": {
+                "x": 269,
+                "y": 351,
+                "w": 21,
+                "h": 21
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "plant",
+            "frame": {
+                "x": 290,
+                "y": 351,
+                "w": 70,
+                "h": 70
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "plantpurple",
+            "frame": {
+                "x": 0,
+                "y": 420,
+                "w": 70,
+                "h": 70
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "rock",
+            "frame": {
+                "x": 70,
+                "y": 420,
+                "w": 70,
+                "h": 70
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "snowhill",
+            "frame": {
+                "x": 140,
+                "y": 420,
+                "w": 70,
+                "h": 70
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "spikes",
+            "frame": {
+                "x": 210,
+                "y": 364,
+                "w": 70,
+                "h": 70
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "springboarddown",
+            "frame": {
+                "x": 280,
+                "y": 877,
+                "w": 70,
+                "h": 70
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "springboardup",
+            "frame": {
+                "x": 350,
+                "y": 365,
+                "w": 70,
+                "h": 70
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "star",
+            "frame": {
+                "x": 420,
+                "y": 372,
+                "w": 70,
+                "h": 70
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "switchleft",
+            "frame": {
+                "x": 490,
+                "y": 421,
+                "w": 70,
+                "h": 70
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "switchmid",
+            "frame": {
+                "x": 0,
+                "y": 490,
+                "w": 70,
+                "h": 70
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "switchright",
+            "frame": {
+                "x": 70,
+                "y": 490,
+                "w": 70,
+                "h": 70
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "weight",
+            "frame": {
+                "x": 140,
+                "y": 490,
+                "w": 70,
+                "h": 70
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "weightchained",
+            "frame": {
+                "x": 210,
+                "y": 434,
+                "w": 70,
+                "h": 70
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        }
+    ],
+    "meta": {
+        "description": "Atlas generado con Atlas Packer Phaser3",
+        "web": "https://gammafp.github.io/atlas-packer-phaser/"
+    }
+}

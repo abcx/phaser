@@ -1,0 +1,164 @@
+{
+    "frames": [
+        {
+            "filename": "player_0",
+            "frame": {
+                "x": 0,
+                "y": 0,
+                "w": 73,
+                "h": 97
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "player_1",
+            "frame": {
+                "x": 0,
+                "y": 97,
+                "w": 73,
+                "h": 97
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "player_2",
+            "frame": {
+                "x": 0,
+                "y": 194,
+                "w": 73,
+                "h": 97
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "player_3",
+            "frame": {
+                "x": 0,
+                "y": 291,
+                "w": 73,
+                "h": 97
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "player_4",
+            "frame": {
+                "x": 0,
+                "y": 388,
+                "w": 73,
+                "h": 97
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "player_5",
+            "frame": {
+                "x": 0,
+                "y": 485,
+                "w": 73,
+                "h": 97
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "player_6",
+            "frame": {
+                "x": 0,
+                "y": 582,
+                "w": 73,
+                "h": 97
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "player_7",
+            "frame": {
+                "x": 0,
+                "y": 679,
+                "w": 73,
+                "h": 97
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "player_8",
+            "frame": {
+                "x": 0,
+                "y": 776,
+                "w": 73,
+                "h": 97
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "player_9",
+            "frame": {
+                "x": 0,
+                "y": 873,
+                "w": 73,
+                "h": 97
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "player_10",
+            "frame": {
+                "x": 0,
+                "y": 970,
+                "w": 73,
+                "h": 97
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "player_11",
+            "frame": {
+                "x": 0,
+                "y": 1067,
+                "w": 73,
+                "h": 97
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        }
+    ],
+    "meta": {
+        "description": "Atlas generado con Atlas Packer Phaser3",
+        "web": "https://gammafp.github.io/atlas-packer-phaser/"
+    }
+}

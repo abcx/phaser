@@ -1,19 +1,20 @@
 {
-  "name": "phaser",
+  "name": "phaser-mario",
   "version": "1.0.0",
   "description": "",
-  "main": "app.js",
+  "main": "index.js",
   "scripts": {
-    "dev": "parcel watch *.js",
-    "server-game": "browser-sync start --server --no-notify --files \".\"",
-    "editor": "parcel watch editor.js",
-    "server-editor": "browser-sync start --server --port 3001 --index editor.html --no-notify --files \"**/*.html, **/*.css, **/*.js\"",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node scripts/start.js",
+    "dev": "parcel watch *.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "phaser": "^3.55.2"
+    "phaser": "3.52.0"
+  },
+  "devDependencies": {
+    "parcel-bundler": "1.12.4",
+    "sass": "1.32.5"
   }
 }

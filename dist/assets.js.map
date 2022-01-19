@@ -1,1 +1,0 @@
-{"version":3,"sources":["assets.js"],"names":["assets"],"mappings":";;;;;;AAAO,IAAMA,MAAM,GAAG,CAClB,QADkB,EAElB,QAFkB,EAGlB,MAHkB,EAIlB,QAJkB,EAKlB,MALkB,CAAf","file":"assets.js","sourceRoot":"..","sourcesContent":["export const assets = [\n    'ground',\n    'island',\n    'star',\n    'player',\n    'tile'\n];"]}

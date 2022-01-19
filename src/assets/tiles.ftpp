@@ -1,0 +1,176 @@
+{
+  "meta": {
+    "version": "0.6.7"
+  },
+  "savePath": "/home/abcx/git/phaser2/gra2/src/assets/json",
+  "images": [
+    {
+      "name": "box.png",
+      "path": "/home/abcx/Pobrane/platformerGraphicsDeluxe_Updated/Tiles/box.png",
+      "folder": ""
+    },
+    {
+      "name": "boxCoinAlt.png",
+      "path": "/home/abcx/Pobrane/platformerGraphicsDeluxe_Updated/Tiles/boxCoinAlt.png",
+      "folder": ""
+    },
+    {
+      "name": "boxItemAlt.png",
+      "path": "/home/abcx/Pobrane/platformerGraphicsDeluxe_Updated/Tiles/boxItemAlt.png",
+      "folder": ""
+    },
+    {
+      "name": "boxItemAlt_disabled.png",
+      "path": "/home/abcx/Pobrane/platformerGraphicsDeluxe_Updated/Tiles/boxItemAlt_disabled.png",
+      "folder": ""
+    },
+    {
+      "name": "bridgeLogs.png",
+      "path": "/home/abcx/Pobrane/platformerGraphicsDeluxe_Updated/Tiles/bridgeLogs.png",
+      "folder": ""
+    },
+    {
+      "name": "cactus.png",
+      "path": "/home/abcx/Pobrane/platformerGraphicsDeluxe_Updated/Items/cactus.png",
+      "folder": ""
+    },
+    {
+      "name": "castle.png",
+      "path": "/home/abcx/Pobrane/platformerGraphicsDeluxe_Updated/Tiles/castle.png",
+      "folder": ""
+    },
+    {
+      "name": "castleCenter.png",
+      "path": "/home/abcx/Pobrane/platformerGraphicsDeluxe_Updated/Tiles/castleCenter.png",
+      "folder": ""
+    },
+    {
+      "name": "coinGold.png",
+      "path": "/home/abcx/Pobrane/platformerGraphicsDeluxe_Updated/Items/coinGold.png",
+      "folder": ""
+    },
+    {
+      "name": "fireball.png",
+      "path": "/home/abcx/Pobrane/platformerGraphicsDeluxe_Updated/Items/fireball.png",
+      "folder": ""
+    },
+    {
+      "name": "flagRed.png",
+      "path": "/home/abcx/Pobrane/platformerGraphicsDeluxe_Updated/Items/flagRed.png",
+      "folder": ""
+    },
+    {
+      "name": "gemBlue.png",
+      "path": "/home/abcx/Pobrane/platformerGraphicsDeluxe_Updated/Items/gemBlue.png",
+      "folder": ""
+    },
+    {
+      "name": "grass.png",
+      "path": "/home/abcx/Pobrane/platformerGraphicsDeluxe_Updated/Tiles/grass.png",
+      "folder": ""
+    },
+    {
+      "name": "grassCenter.png",
+      "path": "/home/abcx/Pobrane/platformerGraphicsDeluxe_Updated/Tiles/grassCenter.png",
+      "folder": ""
+    },
+    {
+      "name": "liquidLava.png",
+      "path": "/home/abcx/Pobrane/platformerGraphicsDeluxe_Updated/Tiles/liquidLava.png",
+      "folder": ""
+    },
+    {
+      "name": "liquidLavaTop.png",
+      "path": "/home/abcx/Pobrane/platformerGraphicsDeluxe_Updated/Tiles/liquidLavaTop.png",
+      "folder": ""
+    },
+    {
+      "name": "liquidWater.png",
+      "path": "/home/abcx/Pobrane/platformerGraphicsDeluxe_Updated/Tiles/liquidWater.png",
+      "folder": ""
+    },
+    {
+      "name": "liquidWaterTop.png",
+      "path": "/home/abcx/Pobrane/platformerGraphicsDeluxe_Updated/Tiles/liquidWaterTop.png",
+      "folder": ""
+    },
+    {
+      "name": "sand.png",
+      "path": "/home/abcx/Pobrane/platformerGraphicsDeluxe_Updated/Tiles/sand.png",
+      "folder": ""
+    },
+    {
+      "name": "sandCenter.png",
+      "path": "/home/abcx/Pobrane/platformerGraphicsDeluxe_Updated/Tiles/sandCenter.png",
+      "folder": ""
+    },
+    {
+      "name": "signExit.png",
+      "path": "/home/abcx/Pobrane/platformerGraphicsDeluxe_Updated/Tiles/signExit.png",
+      "folder": ""
+    },
+    {
+      "name": "snow.png",
+      "path": "/home/abcx/Pobrane/platformerGraphicsDeluxe_Updated/Tiles/snow.png",
+      "folder": ""
+    },
+    {
+      "name": "snowCenter.png",
+      "path": "/home/abcx/Pobrane/platformerGraphicsDeluxe_Updated/Tiles/snowCenter.png",
+      "folder": ""
+    },
+    {
+      "name": "spikes.png",
+      "path": "/home/abcx/Pobrane/platformerGraphicsDeluxe_Updated/Items/spikes.png",
+      "folder": ""
+    },
+    {
+      "name": "star.png",
+      "path": "/home/abcx/Pobrane/platformerGraphicsDeluxe_Updated/Items/star.png",
+      "folder": ""
+    },
+    {
+      "name": "stone.png",
+      "path": "/home/abcx/Pobrane/platformerGraphicsDeluxe_Updated/Tiles/stone.png",
+      "folder": ""
+    },
+    {
+      "name": "stoneCenter.png",
+      "path": "/home/abcx/Pobrane/platformerGraphicsDeluxe_Updated/Tiles/stoneCenter.png",
+      "folder": ""
+    },
+    {
+      "name": "window.png",
+      "path": "/home/abcx/Pobrane/platformerGraphicsDeluxe_Updated/Tiles/window.png",
+      "folder": ""
+    }
+  ],
+  "folders": [],
+  "packOptions": {
+    "textureName": "tiles",
+    "textureFormat": "png",
+    "removeFileExtension": false,
+    "prependFolderName": false,
+    "base64Export": false,
+    "tinify": false,
+    "tinifyKey": "",
+    "scale": 1,
+    "filter": "none",
+    "exporter": "Phaser 3",
+    "fileName": "pack-result",
+    "savePath": "/home/abcx/git/phaser2/gra2/src/assets/json",
+    "width": 2048,
+    "height": 2048,
+    "fixedSize": false,
+    "powerOfTwo": false,
+    "padding": 0,
+    "extrude": 0,
+    "allowRotation": false,
+    "allowTrim": false,
+    "trimMode": "trim",
+    "alphaThreshold": "0",
+    "detectIdentical": true,
+    "packer": "MaxRectsBin",
+    "packerMethod": "BestShortSideFit"
+  }
+}

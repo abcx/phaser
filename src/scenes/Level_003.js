@@ -9,11 +9,11 @@ import levelsConf from "../config/levels.conf";
 import generateAnimations from "../config/animations";
 import resetScore from '../ui/resetScore';
 
-class Level_002 extends Phaser.Scene {
-  level = "level_002";
+class Level_003 extends Phaser.Scene {
+  level = "level_003";
 
   constructor() {
-    super("Level_002");
+    super("Level_003");
   }
 
   // Tileset by https://www.deviantart.com/thecrushedjoycon/art/Super-Mario-Bros-Mega-Tileset-Ver-2-842092790
@@ -31,7 +31,6 @@ class Level_002 extends Phaser.Scene {
         frameHeight: 70,
       }
     );
-
     // load level data
     this.load.tilemapTiledJSON(this.level, `./assets/${this.level}.json`);
 
@@ -76,9 +75,9 @@ class Level_002 extends Phaser.Scene {
     this.input.once(
       "pointerdown",
       function (event) {
-        console.log("From Level_002 to Level_003");
+        console.log("From Level_003 to Level_004");
         resetScore();
-        this.scene.start("Level_003");
+        this.scene.start("Level_004");
       },
       this
     );
@@ -92,4 +91,4 @@ class Level_002 extends Phaser.Scene {
   }
 }
 
-export default Level_002;
+export default Level_003;

@@ -30,8 +30,12 @@ class Player {
     }
 
     checkTileType(player, tile) {
+        const tileNames = {
+            LAVA: 14,
+            WATER: 16
+        }
         // console.log(tile.index)
-        if (tile.index === 14) {
+        if (tile.index === tileNames.LAVA || tile.index === tileNames.WATER) {
             this.gameOver();
         }
     }

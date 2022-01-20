@@ -7,8 +7,8 @@ import GameOver from "./scenes/GameOver.js";
 import "./assets/scss/index.scss";
 
 const config = {
-  width: 840,
-  height: 700,
+  width: 1120,
+  height: 910,
   parent: "stage",
   backgroundColor: "#FFFFAC",
   title: "Tilemap",

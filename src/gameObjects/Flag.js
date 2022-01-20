@@ -1,40 +1,43 @@
+import resetScore from '../ui/resetScore';
+
 class Flag {
   constructor(scene) {
-    const flagObject = scene.map.getObjectLayer("flag").objects[0];
-    const flagCoordinates = scene.tileset.texCoordinates[962]; // 962 is the tile index in tiled for the flag
-    const flagRoot = scene.platform.getTileAt(75, 23); // Get the root of the flag with tile pos
-
     this.scene = scene;
-    this.sprite = scene.add
-      .tileSprite(flagObject.x, flagObject.y, 16, 16, "tiles")
-      .setOrigin(0, 1)
-      .setTilePosition(flagCoordinates.x, flagCoordinates.y);
-
-    flagRoot.setCollisionCallback(() => {
-      flagRoot.collisionCallback = null; // Set to null to make sure the callback only runs once
-
-      // More configuration options can be found on https://rexrainbow.github.io/phaser3-rex-notes/docs/site/particles/
-      const particles = scene.add.particles("atlas", "mario-atlas_13");
-      const emitter = particles.createEmitter({
-        x: flagObject.x,
-        y: flagObject.y - flagObject.height,
-        scale: { start: 1, end: 0 },
-        speed: { min: 50, max: 100 },
-        angle: { min: 0, max: -180 },
-        rotate: { min: 0, max: 360 },
-        alpha: 0.5,
-      });
-
-      // scene.tweens.add({
-      //     targets: this.sprite,
-      //     ease: 'Linear',
-      //     y: '+=60',
-      //     duration: 800,
-      //     onComplete: () => emitter.stop()
-      // });
-
-      this.scene.input.keyboard.shutdown();
+    this.levelEnd = this.scene.physics.add.group({
+        immovable: true,
+        allowGravity: false
     });
+    // this.levelEnd = this.scene.physics.add.group();
+    // this.collider = this.scene.physics.add.collider(
+    //   this.scene.player.sprite,
+    //   this.flag,
+    //   this.achieveEndOfLevel,
+    //   null,
+    //   this
+    // );
+
+    const flagElement = this.scene.map.getObjectLayer('flag').objects[0];
+
+    this.levelEnd.create(flagElement.x, flagElement.y - flagElement.height, `${this.scene.level}-tiles`, 22)
+                .setOrigin(0)
+                .setDepth(-1);
+  }
+
+  collideWith(gameObject) {
+    this.scene.physics.add.overlap(this.levelEnd, gameObject, this.achieveEndOfLevel, null, this);
+
+    return this;
+  }
+
+  achieveEndOfLevel(player, tile) {
+    for (const le of this.levelEnd.children.entries) {
+        if (!le.body.touching.none && player.x - tile.x > 35) {
+            le.body.setEnable(false);
+            this.scene.input.keyboard.shutdown();
+            resetScore();
+            this.scene.scene.start("Level_002");
+        }
+    }
   }
 }
 

@@ -3,7 +3,7 @@ import Debugger from "../gameObjects/Debugger";
 import Enemy from "../gameObjects/Enemy";
 import Coin from "../gameObjects/Coin";
 import Diamond from "../gameObjects/Diamond";
-// import Flag from "../gameObjects/Flag";
+import Flag from "../gameObjects/Flag";
 import tiles from "../config/tiles";
 import levelsConf from "../config/levels.conf";
 import generateAnimations from "../config/animations";
@@ -67,7 +67,7 @@ class Level_001 extends Phaser.Scene {
     this.enemies = new Enemy(this).collideWith(this.platform);
     this.coins = new Coin(this).collideWith(this.player.sprite);
     this.diamonds = new Diamond(this).collideWith(this.player.sprite);
-    // this.flag = new Flag(this);
+    this.flag = new Flag(this).collideWith(this.player.sprite);
     this.debugger = new Debugger(this);
 
     this.inputs = this.input.keyboard.createCursorKeys();

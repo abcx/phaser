@@ -1,4 +1,5 @@
 import increaseScore from '../ui/increaseScore';
+import resetScore from '../ui/resetScore';
 
 class Enemy {
     constructor(scene) {
@@ -69,9 +70,23 @@ class Enemy {
         this.scene.physics.world.removeCollider(this.scene.player.collider);
         this.scene.physics.world.removeCollider(this.collider);
 
-        setTimeout(() => {
-            this.scene.scene.start('GameOver');
-        }, 1500);
+        // setTimeout(() => {
+        //     this.scene.scene.start('GameOver');
+        // }, 1500);
+
+        // shake the camera
+        this.scene.cameras.main.shake(500);
+        // fade camera
+        this.scene.time.delayedCall(250, function() {
+            this.scene.cameras.main.fade(250);
+        }, [], this);
+        // restart game
+        this.scene.time.delayedCall(500, function() {
+            resetScore();
+            this.scene.scene.restart();
+        }, [], this);
+        // reset camera effects
+        this.scene.cameras.main.resetFX();
     }
 
     die() {

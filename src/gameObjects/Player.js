@@ -1,3 +1,5 @@
+import resetScore from '../ui/resetScore';
+
 class Player {
     constructor(scene, x, y) {
         const useDeadZone = false;
@@ -6,7 +8,6 @@ class Player {
 
         // By using an object in tiled, you could also dynamically define the spawn point
         this.sprite = scene.physics.add.sprite(x, y, 'atlas');
-            // .setScale(2);
 
         this.sprite.setCollideWorldBounds(true);
         this.sprite.isDed = false;
@@ -23,9 +24,38 @@ class Player {
     }
 
     collideWith(gameObject) {
-        this.collider = this.scene.physics.add.collider(this.sprite, gameObject);
+        this.collider = this.scene.physics.add.collider(this.sprite, gameObject, this.checkTileType, null, this);
 
         return this;
+    }
+
+    checkTileType(player, tile) {
+        // console.log(tile.index)
+        if (tile.index === 14) {
+            this.gameOver();
+        }
+    }
+
+    gameOver() {
+        this.scene.player.die();
+        this.scene.input.keyboard.shutdown();
+
+        this.scene.physics.world.removeCollider(this.scene.player.collider);
+        this.scene.physics.world.removeCollider(this.collider);
+
+        // shake the camera
+        this.scene.cameras.main.shake(500);
+        // fade camera
+        this.scene.time.delayedCall(250, function() {
+            this.scene.cameras.main.fade(250);
+        }, [], this);
+        // restart game
+        this.scene.time.delayedCall(500, function() {
+            resetScore();
+            this.scene.scene.restart();
+        }, [], this);
+        // reset camera effects
+        this.scene.cameras.main.resetFX();
     }
 
     reFollowPlayer() {

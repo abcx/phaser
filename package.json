@@ -4,8 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node scripts/start.js",
-    "dev": "parcel watch *.js"
+    "start": "npm run clean && npm run build",
+    "build": "node scripts/start.js",
+    "dev": "parcel watch *.js",
+    "clean": "del-cli --force ./build ./.cache"
   },
   "keywords": [],
   "author": "",
@@ -14,6 +16,7 @@
     "phaser": "3.52.0"
   },
   "devDependencies": {
+    "del-cli": "^4.0.1",
     "parcel-bundler": "1.12.4",
     "sass": "1.32.5"
   }

@@ -6,10 +6,17 @@ class Enemy {
         this.enemies = this.scene.physics.add.group();
         this.collider = this.scene.physics.add.collider(this.scene.player.sprite, this.enemies, this.gameOver, null, this);
 
-        const enemyObjects = this.scene.map.getObjectLayer('enemies').objects;
+        const enemyObjects1 = this.scene.map.getObjectLayer('enemies1').objects;
+        const enemyObjects2 = this.scene.map.getObjectLayer('enemies2').objects;
 
-        for (const enemy of enemyObjects) {
-            this.enemies.create(enemy.x, enemy.y - enemy.height, 'enemies', 'snailwalk1')
+        for (const enemy of enemyObjects1) {
+            this.enemies.create(enemy.x, enemy.y - enemy.height, 'enemies1', 'snailwalk1')
+                .setScale(1.5)
+                .setOrigin(0)
+                .setDepth(-1);
+        }
+        for (const enemy of enemyObjects2) {
+            this.enemies.create(enemy.x, enemy.y - enemy.height, 'enemies2', 'slimewalk1')
                 .setScale(1.5)
                 .setOrigin(0)
                 .setDepth(-1);
@@ -43,7 +50,8 @@ class Enemy {
                 enemy.setVelocityX(-100).setFlipX(false);
             }
 
-            !enemy.isDed && enemy.play('enemyRun', true);
+            !enemy.isDed && enemy.play('enemy1Run', true);
+            !enemy.isDed && enemy.play('enemy2Run', true);
         }
     }
 

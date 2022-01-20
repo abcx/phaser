@@ -2,7 +2,7 @@
   "meta": {
     "version": "0.6.7"
   },
-  "savePath": "/home/abcx/git/phaser2/gra2/src/assets/json",
+  "savePath": "/home/abcx/git/phaser2/gra2/src/assets",
   "images": [
     {
       "name": "box.png",
@@ -156,9 +156,9 @@
     "tinifyKey": "",
     "scale": 1,
     "filter": "none",
-    "exporter": "Phaser 3",
+    "exporter": "JSON (hash)",
     "fileName": "pack-result",
-    "savePath": "/home/abcx/git/phaser2/gra2/src/assets/json",
+    "savePath": "/home/abcx/git/phaser2/gra2/src/assets",
     "width": 2048,
     "height": 2048,
     "fixedSize": false,

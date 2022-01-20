@@ -1,7 +1,7 @@
 
 import increaseScore from '../ui/increaseScore';
 
-class Coin {
+class Diamond {
     constructor(scene) {
         this.scene = scene;
         // Or you can simply say staticGroup, to make them immovable an not affected by gravity
@@ -11,10 +11,10 @@ class Coin {
         });
 
         // You could also use the same object layer and differentiate between different objects by custom properties
-        const coinObjects = this.scene.map.getObjectLayer('coins').objects;
+        const coinObjects = this.scene.map.getObjectLayer('diamonds').objects;
 
         for (const coin of coinObjects) {
-            this.coins.create(coin.x, coin.y, `${this.scene.level}-tiles`, 8)
+            this.coins.create(coin.x, coin.y, `${this.scene.level}-tiles`, 9)
                 .setOrigin(1)
                 .setDepth(-1);
         }
@@ -60,8 +60,8 @@ class Coin {
             }
         }
 
-        increaseScore(1);
+        increaseScore(2);
     }
 }
 
-export default Coin;
+export default Diamond;

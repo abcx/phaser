@@ -33,7 +33,7 @@ export default scene => {
 
     // Enemy
     scene.anims.create({
-        key: 'enemyRun',
+        key: 'enemy1Run',
         frames: scene.anims.generateFrameNames('enemies', {
             prefix: 'snailwalk',
             start: 1,
@@ -42,13 +42,23 @@ export default scene => {
         frameRate: 15,
         repeat: -1
     });
+    scene.anims.create({
+        key: 'enemy2Run',
+        frames: scene.anims.generateFrameNames('enemies', {
+            prefix: 'slimewalk',
+            start: 1,
+            end: 2,
+        }),
+        frameRate: 15,
+        repeat: -1
+    });
 
-    // scene.anims.create({
-    //     key: 'enemyDie',
-    //     frames: [{ key: 'enemies', frame: 'enemy_0' }],
-    //     frameRate: 10,
-    //     hideOnComplete: true
-    // });
+    scene.anims.create({
+        key: 'enemyDie',
+        frames: [{ key: 'enemies', frame: 'slimewalk1' }],
+        frameRate: 10,
+        hideOnComplete: true
+    });
 
     // Coin
     // scene.anims.create({

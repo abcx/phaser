@@ -1,5 +1,6 @@
 import resetScore from '../ui/resetScore';
 import levelsConf from "../config/levels.conf";
+import { decreaseLives, checkLives } from '../ui/decreaseLives';
 
 class Player {
     constructor(scene, x, y) {
@@ -43,6 +44,8 @@ class Player {
     }
 
     gameOver() {
+        decreaseLives();
+
         this.scene.player.die();
         this.scene.input.keyboard.shutdown();
 
@@ -55,11 +58,17 @@ class Player {
         this.scene.time.delayedCall(250, function() {
             this.scene.cameras.main.fade(250);
         }, [], this);
-        // restart game
-        this.scene.time.delayedCall(500, function() {
-            resetScore();
-            this.scene.scene.restart();
-        }, [], this);
+
+        if (checkLives()) {
+            // restart game
+            this.scene.time.delayedCall(500, function() {
+                resetScore();
+                this.scene.scene.restart();
+            }, [], this);
+        } else {
+            this.scene.scene.start('GameOver');
+        }
+
         // reset camera effects
         this.scene.cameras.main.resetFX();
     }

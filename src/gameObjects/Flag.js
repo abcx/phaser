@@ -1,5 +1,6 @@
 import resetScore from "../ui/resetScore";
 import levelsConf from "../config/levels.conf";
+import increaseLevelNumber from "../commons/increaseLevelNumber";
 
 class Flag {
   constructor(scene) {
@@ -8,14 +9,6 @@ class Flag {
       immovable: true,
       allowGravity: false,
     });
-    // this.levelEnd = this.scene.physics.add.group();
-    // this.collider = this.scene.physics.add.collider(
-    //   this.scene.player.sprite,
-    //   this.flag,
-    //   this.achieveEndOfLevel,
-    //   null,
-    //   this
-    // );
 
     const flagElement = this.scene.map.getObjectLayer("flag").objects[0];
 
@@ -47,8 +40,10 @@ class Flag {
       if (!le.body.touching.none && player.x - tile.x > 35) {
         le.body.setEnable(false);
         this.scene.input.keyboard.shutdown();
-        resetScore();
-        this.scene.scene.start("Level_002");
+        // resetScore();
+        const L = increaseLevelNumber(this.scene);
+        console.log(`From Level_000 to ${L}`);
+        this.scene.scene.start(L);
       }
     }
   }

@@ -16,7 +16,9 @@ class InfoBox {
       allowGravity: false,
     });
 
-    const infoElement = this.scene.map.getObjectLayer("info").objects;
+    const infoElement = !!this.scene.map.getObjectLayer("info")
+      ? this.scene.map.getObjectLayer("info").objects
+      : [];
 
     for (const box of infoElement) {
       this.infoBox
@@ -71,10 +73,13 @@ class InfoBox {
 
     answers.forEach((answer, i) => {
       let li = document.createElement("li");
+
       li.innerHTML = `<span>${String.fromCharCode(
         charCode + i
       )})</span> ${answer}`;
+
       li.dataset.idx = i;
+
       li.addEventListener("click", (e) => {
         if (Number(e.target.dataset.idx) === correct) {
           e.target.classList.add("correct");
@@ -82,11 +87,13 @@ class InfoBox {
         } else {
           e.target.classList.add("wrong");
         }
+
         setTimeout((_) => {
           this.openedBoxes.push(tileName);
           this.closeDialog();
         }, 1000);
       });
+
       this.dialogAnswers.appendChild(li);
     });
   }

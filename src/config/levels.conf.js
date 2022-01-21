@@ -5,6 +5,7 @@ const standard = {
   player: "player",
   enemies: "enemies",
   tileNames: tileNames,
+  background: "noce-poce.jpg"
 };
 
 export default {

@@ -1,6 +1,6 @@
 import resetScore from '../ui/resetScore';
 import levelsConf from "../config/levels.conf";
-import { decreaseLives, checkLives } from '../ui/decreaseLives';
+import gameOver from '../commons/game-over';
 
 class Player {
     constructor(scene, x, y) {
@@ -44,33 +44,7 @@ class Player {
     }
 
     gameOver() {
-        decreaseLives();
-
-        this.scene.player.die();
-        this.scene.input.keyboard.shutdown();
-
-        this.scene.physics.world.removeCollider(this.scene.player.collider);
-        this.scene.physics.world.removeCollider(this.collider);
-
-        // shake the camera
-        this.scene.cameras.main.shake(500);
-        // fade camera
-        this.scene.time.delayedCall(250, function() {
-            this.scene.cameras.main.fade(250);
-        }, [], this);
-
-        if (checkLives()) {
-            // restart game
-            this.scene.time.delayedCall(500, function() {
-                resetScore();
-                this.scene.scene.restart();
-            }, [], this);
-        } else {
-            this.scene.scene.start('GameOver');
-        }
-
-        // reset camera effects
-        this.scene.cameras.main.resetFX();
+        gameOver(this.scene, this.collider);
     }
 
     reFollowPlayer() {

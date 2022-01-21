@@ -1,6 +1,9 @@
 import resetScore from '../ui/resetScore';
+import { decreaseLives, checkLives } from '../ui/decreaseLives';
 
 export default function gameOver(scene, collider) {
+
+    decreaseLives();
 
     scene.player.die();
     scene.input.keyboard.shutdown();
@@ -18,11 +21,15 @@ export default function gameOver(scene, collider) {
     scene.time.delayedCall(250, function() {
         scene.cameras.main.fade(250);
     }, [], this);
-    // restart game
-    scene.time.delayedCall(500, function() {
-        resetScore();
-        scene.scene.restart();
-    }, [], this);
+    if (checkLives()) {
+        // restart game
+        scene.time.delayedCall(500, function() {
+            resetScore();
+            scene.scene.restart();
+        }, [], scene);
+    } else {
+        scene.scene.start('GameOver');
+    }
     // reset camera effects
     scene.cameras.main.resetFX();
 };

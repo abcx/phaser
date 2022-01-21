@@ -2,6 +2,8 @@ import levelsConf from "../config/levels.conf";
 import generateAnimations from "../config/animations";
 
 export default function preload(scene) {
+  // load background
+  scene.load.image("background", `assets/${levelsConf[scene.level].background}`);
 
   // load tiles spritesheet
   scene.load.spritesheet(

@@ -4,9 +4,10 @@ import Enemy from "../gameObjects/Enemy";
 import Coin from "../gameObjects/Coin";
 import Diamond from "../gameObjects/Diamond";
 import Flag from "../gameObjects/Flag";
+import InfoBox from "../gameObjects/InfoBox";
 import tiles from "../config/tiles";
-import resetScore from '../ui/resetScore';
-import increaseLevelNumber from '../commons/increaseLevelNumber';
+import resetScore from "../ui/resetScore";
+import increaseLevelNumber from "../commons/increaseLevelNumber";
 
 export default function create(scene) {
   const noCollisionTiles = [tiles.EMPTY, tiles.FLAG_LEFT];
@@ -24,9 +25,14 @@ export default function create(scene) {
   scene.coins = new Coin(scene).collideWith(scene.player.sprite);
   scene.diamonds = new Diamond(scene).collideWith(scene.player.sprite);
   scene.flag = new Flag(scene).collideWith(scene.player.sprite);
+  scene.infoBox = new InfoBox(scene).collideWith(scene.player.sprite);
   scene.debugger = new Debugger(scene);
 
   scene.inputs = scene.input.keyboard.createCursorKeys();
+
+//   scene.input.on("pointerdown", function (container) {
+//     console.log(container);
+//   });
 
   scene.input.once(
     "pointerdown",
@@ -37,7 +43,7 @@ export default function create(scene) {
       if (L) {
         scene.scene.start(L);
       } else {
-        scene.scene.start('GameOver');
+        scene.scene.start("GameOver");
       }
     },
     scene

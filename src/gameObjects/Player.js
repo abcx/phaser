@@ -25,13 +25,13 @@ class Player {
     }
 
     collideWith(gameObject) {
-        console.log(gameObject)
+        // console.log(gameObject)
         this.collider = this.scene.physics.add.collider(this.sprite, gameObject, this.checkTileType, null, this);
         return this;
     }
 
     checkTileType(player, tile) {
-        console.log('checkTileType', tile.index)
+        // console.log('checkTileType', tile.index)
         const T = levelsConf[this.scene.level].tileNames;
 
         switch (tile.index) {

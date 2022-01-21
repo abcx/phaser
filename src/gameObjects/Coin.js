@@ -15,7 +15,7 @@ class Coin {
 
         for (const coin of coinObjects) {
             this.coins.create(coin.x, coin.y, `${this.scene.level}-tiles`, 8)
-                .setOrigin(1)
+                .setOrigin(0, 1)
                 .setDepth(-1);
         }
 

@@ -1,4 +1,5 @@
 import resetScore from '../ui/resetScore';
+import levelsConf from "../config/levels.conf";
 
 class Player {
     constructor(scene, x, y) {
@@ -9,7 +10,7 @@ class Player {
         // By using an object in tiled, you could also dynamically define the spawn point
         this.sprite = scene.physics.add.sprite(x, y, 'atlas');
 
-        this.sprite.setCollideWorldBounds(true);
+        // this.sprite.setCollideWorldBounds(true);
         this.sprite.isDed = false;
 
         scene.cameras.main
@@ -24,19 +25,20 @@ class Player {
     }
 
     collideWith(gameObject) {
+        console.log(gameObject)
         this.collider = this.scene.physics.add.collider(this.sprite, gameObject, this.checkTileType, null, this);
-
         return this;
     }
 
     checkTileType(player, tile) {
-        const tileNames = {
-            LAVA: 14,
-            WATER: 16
-        }
-        // console.log(tile.index)
-        if (tile.index === tileNames.LAVA || tile.index === tileNames.WATER) {
-            this.gameOver();
+        console.log('checkTileType', tile.index)
+        const T = levelsConf[this.scene.level].tileNames;
+
+        switch (tile.index) {
+            case T.LAVA:
+            case T.WATER:
+                this.gameOver();
+                break;
         }
     }
 

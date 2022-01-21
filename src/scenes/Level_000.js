@@ -2,11 +2,11 @@ import preload from "../commons/preload";
 import create from "../commons/create";
 import update from "../commons/update";
 
-class Level_001 extends Phaser.Scene {
-  level = "Level_001";
+class Level_000 extends Phaser.Scene {
+  level = "Level_000";
 
   constructor() {
-    super("Level_001");
+    super("Level_000");
   }
 
   preload() {
@@ -21,4 +21,4 @@ class Level_001 extends Phaser.Scene {
     update(this);
   }
 }
-export default Level_001;
+export default Level_000;

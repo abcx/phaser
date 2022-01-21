@@ -1,5 +1,5 @@
 import increaseScore from '../ui/increaseScore';
-import resetScore from '../ui/resetScore';
+import gameOver from '../commons/game-over';
 
 class Enemy {
     constructor(scene) {
@@ -57,46 +57,22 @@ class Enemy {
     }
 
     gameOver() {
-        // PHEW
         if (this.scene.player.sprite.body.touching.down) {
             this.die();
-
             return;
         }
-
-        this.scene.player.die();
-        this.scene.input.keyboard.shutdown();
-
-        this.scene.physics.world.removeCollider(this.scene.player.collider);
-        this.scene.physics.world.removeCollider(this.collider);
-
-        // setTimeout(() => {
-        //     this.scene.scene.start('GameOver');
-        // }, 1500);
-
-        // shake the camera
-        this.scene.cameras.main.shake(500);
-        // fade camera
-        this.scene.time.delayedCall(250, function() {
-            this.scene.cameras.main.fade(250);
-        }, [], this);
-        // restart game
-        this.scene.time.delayedCall(500, function() {
-            resetScore();
-            this.scene.scene.restart();
-        }, [], this);
-        // reset camera effects
-        this.scene.cameras.main.resetFX();
+        gameOver(this.scene, this.collider);
     }
 
     die() {
         for (const enemy of this.enemies.children.entries) {
+
             if (enemy.body.touching.up) {
                 enemy.isDed = true;
                 enemy.play('enemyDie', true);
                 enemy.on('animationcomplete', () => enemy.destroy());
 
-                increaseScore(.5);
+                increaseScore(1);
 
                 this.scene.player.sprite.setVelocity(0, -350);
                 this.scene.player.sprite.play('jump');

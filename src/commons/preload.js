@@ -2,8 +2,20 @@ import levelsConf from "../config/levels.conf";
 import generateAnimations from "../config/animations";
 
 export default function preload(scene) {
-  // load background
-  scene.load.image("background", `assets/${levelsConf[scene.level].background}`);
+  const isParallaxBcgr = Array.isArray(levelsConf[scene.level].background);
+
+  if (isParallaxBcgr) {
+    // load parallax background
+    levelsConf[scene.level].background.forEach((el) => {
+      scene.load.image(el.key, `assets/${el.value}`);
+    });
+  } else {
+    // load single image background
+    scene.load.image(
+      "background",
+      `assets/${levelsConf[scene.level].background}`
+    );
+  }
 
   // load tiles spritesheet
   scene.load.spritesheet(

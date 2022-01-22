@@ -1,6 +1,7 @@
 body {
   margin: 0;
   user-select: none;
+  font-family: 'Bungee', cursive;
 }
 
 #stage {
@@ -25,14 +26,15 @@ label {
   font-size: 21px;
   top: 10px;
   color: #fff;
+  text-shadow: 2px 2px 2px rgba(0, 0, 0, 1);
 }
 
 .lives {
-  left: 10px;
+  right: 10px;
 }
 
 .score {
-  left: 100px;
+  right: 160px;
 }
 
 .game-over {
@@ -68,6 +70,9 @@ label {
   flex-wrap: wrap;
   padding: 10px;
   box-sizing: border-box;
+  -webkit-box-shadow: 0px 0px 20px 4px rgba(73, 74, 74, 0.71);
+  -moz-box-shadow: 0px 0px 20px 4px rgba(73, 74, 74, 0.71);
+  box-shadow: 0px 0px 20px 4px rgba(73, 74, 74, 0.71);
 
   &.visible {
     display: flex;
@@ -98,9 +103,9 @@ label {
       }
 
       &.wrong {
-          background-color: red;
-          color: #fff;
-          border-color: darkred;
+        background-color: red;
+        color: #fff;
+        border-color: darkred;
       }
 
       span {

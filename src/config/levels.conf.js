@@ -5,7 +5,6 @@ const standard = {
   player: "player",
   enemies: "enemies",
   tileNames: tileNames,
-  //   background: "noce-poce.jpg"
   background: [
     {
       key: "sky",
@@ -30,8 +29,8 @@ export default {
     ...standard,
     tileNames: { ...tileNames, EXIT: tileNames.EXIT_SIGN },
   },
-  Level_001: { ...standard, background: "noce-poce.jpg" },
-  Level_002: standard,
-  Level_003: standard,
+  Level_001: standard,
+  Level_002: { ...standard, background: "noce-poce.jpg" },
+  Level_003: { ...standard, background: "bcgrAsia.jpeg" },
   Level_004: standard,
 };

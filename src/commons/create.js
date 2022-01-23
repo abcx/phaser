@@ -36,7 +36,7 @@ export default function create(scene) {
     let image = scene.add.image(
       scene.cameras.main.width / 2,
       scene.cameras.main.height / 2,
-      "background"
+      "background" + scene.level
     );
     let scaleX = scene.cameras.main.width / image.width;
     let scaleY = scene.cameras.main.height / image.height;

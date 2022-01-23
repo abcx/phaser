@@ -3,7 +3,7 @@ import generateAnimations from "../config/animations";
 
 export default function preload(scene) {
   const isParallaxBcgr = Array.isArray(levelsConf[scene.level].background);
-
+console.log(scene.level, levelsConf[scene.level])
   if (isParallaxBcgr) {
     // load parallax background
     levelsConf[scene.level].background.forEach((el) => {
@@ -12,7 +12,7 @@ export default function preload(scene) {
   } else {
     // load single image background
     scene.load.image(
-      "background",
+      "background" + scene.level,
       `assets/${levelsConf[scene.level].background}`
     );
   }

@@ -6,12 +6,6 @@
  <tileset firstgid="1" name="tiles" tilewidth="70" tileheight="70" tilecount="23" columns="1">
   <image source="img/tiles.png" trans="ff00ff" width="70" height="1610"/>
  </tileset>
- <tileset firstgid="24" name="tilesAsia" tilewidth="70" tileheight="70" tilecount="23" columns="1">
-  <image source="img/tilesAsia.png" trans="ff00ff" width="70" height="1610"/>
- </tileset>
- <tileset firstgid="47" name="tilesMania" tilewidth="70" tileheight="70" tilecount="21" columns="1">
-  <image source="img/tilesMania.png" trans="ff00ff" width="70" height="1470"/>
- </tileset>
  <layer id="1" name="platforms" width="80" height="14">
   <data encoding="csv">
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,

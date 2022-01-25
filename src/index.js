@@ -25,6 +25,9 @@ const config = {
     },
   },
   scene: [Level_000, Level_001, Level_002, Level_003, Level_004, GameOver],
+  audio: {
+      disableWebAudio: true
+  },
 };
 
 new Phaser.Game(config);

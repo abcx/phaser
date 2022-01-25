@@ -24,11 +24,11 @@ export default function create(scene) {
     levelsConf[scene.level].background.forEach((el, idx) => {
       if (idx === 0) {
         scene.add
-          .image(width * 0.5, height * 0.5, "sky")
+          .image(width * 0.5, height * 0.5, el.key + scene.level)
           .setScrollFactor(0)
           .setDepth(-1);
       } else {
-        createAlignedBcgr(scene, totalWidth, el.key, el.scroll);
+        createAlignedBcgr(scene, totalWidth, el.key + scene.level, el.scroll);
       }
     });
   } else {
@@ -55,6 +55,15 @@ export default function create(scene) {
   // //                             .setScrollFactor(0, 1) //this line keeps your background from scrolling outside of camera bounds
   // //                             .setTilePosition(scene.cameras.main.scrollX);
 
+
+  // set sounds
+  scene.sound.pauseOnBlur = false;
+  scene.fx = {};
+  scene.fx.coin = scene.sound.add('coin-' + scene.level);
+
+//   scene.fx.coin.play();
+
+  // prepare scene
   scene.map = scene.make.tilemap({ key: scene.level });
   scene.tileset = scene.map.addTilesetImage("tiles", `${scene.level}-tiles`);
 
@@ -81,7 +90,7 @@ export default function create(scene) {
     "pointerdown",
     function (event) {
       const L = increaseLevelNumber(scene);
-      console.log(`From Level_000 to ${L}`);
+      console.log(`Go to ${L}`);
       resetScore();
       if (L) {
         scene.scene.start(L);

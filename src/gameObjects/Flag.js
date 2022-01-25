@@ -1,6 +1,8 @@
 import resetScore from "../ui/resetScore";
 import levelsConf from "../config/levels.conf";
 import increaseLevelNumber from "../commons/increaseLevelNumber";
+import rememberScore from '../ui/rememberScore';
+import readScore from '../ui/readScore';
 
 class Flag {
   constructor(scene) {
@@ -42,8 +44,14 @@ class Flag {
         this.scene.input.keyboard.shutdown();
         // resetScore();
         const L = increaseLevelNumber(this.scene);
-        console.log(`From Level_000 to ${L}`);
-        this.scene.scene.start(L);
+        if (L) {
+            console.log(`Go to ${L}`);
+            rememberScore(readScore());
+console.log('score', readScore())
+            this.scene.scene.start(L);
+        } else {
+            scene.scene.start('GameOver');
+        }
       }
     }
   }

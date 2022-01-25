@@ -3,11 +3,11 @@ import generateAnimations from "../config/animations";
 
 export default function preload(scene) {
   const isParallaxBcgr = Array.isArray(levelsConf[scene.level].background);
-console.log(scene.level, levelsConf[scene.level])
+
   if (isParallaxBcgr) {
     // load parallax background
     levelsConf[scene.level].background.forEach((el) => {
-      scene.load.image(el.key, `assets/${el.value}`);
+      scene.load.image(el.key + scene.level, `assets/${el.value}`);
     });
   } else {
     // load single image background
@@ -26,6 +26,9 @@ console.log(scene.level, levelsConf[scene.level])
       frameHeight: 70,
     }
   );
+  // load sounds
+  scene.load.audio('coin-' + scene.level, './assets/coin.mp3');
+
   // load level data
   scene.load.tilemapTiledJSON(scene.level, `./assets/${scene.level}.json`);
 

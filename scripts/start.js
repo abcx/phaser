@@ -36,7 +36,7 @@ if (!fs.existsSync(paths.build.assets)) {
     }
 }
 
-require('child_process').spawn('parcel', ['index.html', '--no-autoinstall', '--open', '--out-dir', 'build'], {
+require('child_process').spawn('parcel', ['index.html', '--no-autoinstall', '--no-cache', '--open', '--out-dir', 'build'], {
     stdio: ['ignore', 'inherit', 'inherit'],
     shell: true
 });

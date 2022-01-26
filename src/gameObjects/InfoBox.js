@@ -59,12 +59,14 @@ class InfoBox {
       this.createAnswersElements(tile.name, puzzle.answers, puzzle.correct);
       this.dialog.classList.add("visible");
       this.scene.player.collidingTile = tile;
+      this.scene.fx.openDialog.play();
     }
   }
 
   closeDialog() {
     this.scene.player.collidingTile = null;
     this.dialog.classList.remove("visible");
+    // this.scene.fx.openDialog.play();
   }
 
   createAnswersElements(tileName, answers, correct) {

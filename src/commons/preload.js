@@ -28,6 +28,12 @@ export default function preload(scene) {
   );
   // load sounds
   scene.load.audio('coin-' + scene.level, './assets/coin.mp3');
+  scene.load.audio('diamond-' + scene.level, './assets/diamond.mp3');
+  scene.load.audio('flag-' + scene.level, './assets/flag.mp3');
+  scene.load.audio('enemyHit-' + scene.level, './assets/enemy-hit.mp3');
+  scene.load.audio('openDialog-' + scene.level, './assets/open-dialog.mp3');
+  scene.load.audio('playerHit-' + scene.level, './assets/player-hit.mp3');
+  scene.load.audio('musicGame-' + scene.level, './assets/music-game.mp3');
 
   // load level data
   scene.load.tilemapTiledJSON(scene.level, `./assets/${scene.level}.json`);

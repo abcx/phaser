@@ -17,19 +17,25 @@ export default function gameOver(scene, collider) {
 
     // shake the camera
     scene.cameras.main.shake(500);
-    // fade camera
-    scene.time.delayedCall(250, function() {
-        scene.cameras.main.fade(250);
-    }, [], this);
-    if (checkLives()) {
-        // restart game
-        scene.time.delayedCall(500, function() {
-            resetScore();
-            scene.scene.restart();
-        }, [], scene);
-    } else {
-        scene.scene.start('GameOver');
-    }
-    // reset camera effects
-    scene.cameras.main.resetFX();
+
+    // play sound
+    scene.fx.playerHit.play();
+
+    setTimeout(_ => {
+        // fade camera
+        scene.time.delayedCall(250, function() {
+            scene.cameras.main.fade(250);
+        }, [], this);
+        if (checkLives()) {
+            // restart game
+            scene.time.delayedCall(500, function() {
+                resetScore();
+                scene.scene.restart();
+            }, [], scene);
+        } else {
+            scene.scene.start('GameOver');
+        }
+        // reset camera effects
+        scene.cameras.main.resetFX();
+    }, 2534);
 };

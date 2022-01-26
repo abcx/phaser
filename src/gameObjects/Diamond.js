@@ -64,7 +64,7 @@ class Diamond {
           onComplete: () => coin.destroy(),
         });
 
-        this.scene.fx.coin.play();
+        this.scene.fx.diamond.play();
       }
     }
 

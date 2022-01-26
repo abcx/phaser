@@ -55,13 +55,31 @@ export default function create(scene) {
   // //                             .setScrollFactor(0, 1) //this line keeps your background from scrolling outside of camera bounds
   // //                             .setTilePosition(scene.cameras.main.scrollX);
 
-
   // set sounds
   scene.sound.pauseOnBlur = false;
   scene.fx = {};
-  scene.fx.coin = scene.sound.add('coin-' + scene.level);
+  scene.fx.coin = scene.sound.add("coin-" + scene.level);
+  scene.fx.diamond = scene.sound.add("diamond-" + scene.level);
+  scene.fx.flag = scene.sound.add("flag-" + scene.level);
+  scene.fx.enemyHit = scene.sound.add("enemyHit-" + scene.level);
+  scene.fx.openDialog = scene.sound.add("openDialog-" + scene.level);
+  scene.fx.playerHit = scene.sound.add("playerHit-" + scene.level);
+  scene.fx.musicGame = scene.sound.add("musicGame-" + scene.level, {
+    volume: 0.2,
+    loop: true,
+  });
 
-//   scene.fx.coin.play();
+  // start play game music
+  if (!scene.sound.locked) {
+    // already unlocked so play
+    scene.fx.musicGame.play();
+  } else {
+    // wait for 'unlocked' to fire and then play
+    scene.sound.once(Phaser.Sound.Events.UNLOCKED, () => {
+        scene.fx.musicGame.play();
+    });
+  }
+
 
   // prepare scene
   scene.map = scene.make.tilemap({ key: scene.level });
@@ -72,7 +90,7 @@ export default function create(scene) {
 
   //   scene.map.createLayer("background", scene.tileset, 0, 0);
 
-  scene.player = new Player(scene, 30, 550).collideWith(scene.platform);
+  scene.player = new Player(scene, 30, 150).collideWith(scene.platform);
   scene.enemies = new Enemy(scene).collideWith(scene.platform);
   scene.coins = new Coin(scene).collideWith(scene.player.sprite);
   scene.diamonds = new Diamond(scene).collideWith(scene.player.sprite);

@@ -40,6 +40,7 @@ class Flag {
   achieveEndOfLevel(player, tile) {
     for (const le of this.levelEnd.children.entries) {
       if (!le.body.touching.none && player.x - tile.x > 35) {
+          console.log(player.x, tile.x, player.x - tile.x)
         le.body.setEnable(false);
         this.scene.input.keyboard.shutdown();
         // resetScore();
@@ -48,9 +49,14 @@ class Flag {
             console.log(`Go to ${L}`);
             rememberScore(readScore());
 console.log('score', readScore())
-            this.scene.scene.start(L);
+
+            this.scene.scene.fx.flag.play();
+
+            setTimeout(_ => {
+                this.scene.scene.start(L);
+            }, 2834); // jingel length [ms]
         } else {
-            scene.scene.start('GameOver');
+            this.scene.scene.start('GameOver');
         }
       }
     }

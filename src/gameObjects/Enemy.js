@@ -76,6 +76,7 @@ class Enemy {
 
                 this.scene.player.sprite.setVelocity(0, -350);
                 this.scene.player.sprite.play('jump');
+                this.scene.fx.enemyHit.play();
             };
         }
     }

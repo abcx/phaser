@@ -48,7 +48,7 @@ class InfoBox {
   }
 
   openDialog(player, tile) {
-    const puzzle = puzzles[tile.name];
+    const puzzle = puzzles[this.scene.level][tile.name];
 
     if (
       this.openedBoxes.indexOf(tile.name) === -1 &&

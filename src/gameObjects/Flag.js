@@ -39,18 +39,25 @@ class Flag {
 
   achieveEndOfLevel(player, tile) {
     for (const le of this.levelEnd.children.entries) {
+
       if (!le.body.touching.none && player.x - tile.x > 35) {
-          console.log(player.x, tile.x, player.x - tile.x)
+
         le.body.setEnable(false);
+
         this.scene.input.keyboard.shutdown();
-        // resetScore();
+
         const L = increaseLevelNumber(this.scene);
+
         if (L) {
             console.log(`Go to ${L}`);
             rememberScore(readScore());
-console.log('score', readScore())
 
-            this.scene.scene.fx.flag.play();
+            this.scene.fx.flag.play();
+
+            // fade camera
+            this.scene.time.delayedCall(250, function() {
+                this.scene.cameras.main.fade(250);
+            }, [], this);
 
             setTimeout(_ => {
                 this.scene.scene.start(L);

@@ -170,6 +170,18 @@
                  "width":70,
                  "x":346.333,
                  "y":912.333
+                }, 
+                {
+                 "gid":32,
+                 "height":70,
+                 "id":74,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":70,
+                 "x":770.333333333333,
+                 "y":699
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -205,6 +217,30 @@
                  "width":70,
                  "x":282.333,
                  "y":907
+                }, 
+                {
+                 "gid":33,
+                 "height":70,
+                 "id":72,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":70,
+                 "x":487.666666666667,
+                 "y":699
+                }, 
+                {
+                 "gid":57,
+                 "height":70,
+                 "id":73,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":70,
+                 "x":697,
+                 "y":699
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -213,7 +249,7 @@
          "y":0
         }],
  "nextlayerid":11,
- "nextobjectid":72,
+ "nextobjectid":75,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.7.2",
@@ -229,6 +265,34 @@
          "name":"tiles",
          "spacing":0,
          "tilecount":23,
+         "tileheight":70,
+         "tilewidth":70,
+         "transparentcolor":"#ff00ff"
+        }, 
+        {
+         "columns":1,
+         "firstgid":24,
+         "image":"..\/img\/tilesAsia.png",
+         "imageheight":1610,
+         "imagewidth":70,
+         "margin":0,
+         "name":"tilesAsia",
+         "spacing":0,
+         "tilecount":23,
+         "tileheight":70,
+         "tilewidth":70,
+         "transparentcolor":"#ff00ff"
+        }, 
+        {
+         "columns":1,
+         "firstgid":47,
+         "image":"..\/img\/tilesMania.png",
+         "imageheight":1470,
+         "imagewidth":70,
+         "margin":0,
+         "name":"tilesMania",
+         "spacing":0,
+         "tilecount":21,
          "tileheight":70,
          "tilewidth":70,
          "transparentcolor":"#ff00ff"

@@ -1,0 +1,110 @@
+body {
+  margin: 0;
+  user-select: none;
+  font-family: "Bungee", cursive;
+}
+
+#stage {
+  background: #000;
+  width: 1120px;
+  height: 910px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+label {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+}
+
+.lives,
+.score {
+  position: absolute;
+  font-size: 21px;
+  top: 10px;
+  color: #fff;
+  text-shadow: 2px 2px 2px black;
+}
+
+.lives {
+  right: 10px;
+}
+
+.score {
+  right: 160px;
+}
+
+.game-over {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 21px;
+  color: #fff;
+  display: none;
+}
+.game-over.visible {
+  display: block;
+}
+
+#dialog {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 21px;
+  color: #000;
+  display: none;
+  background-color: #ccc;
+  text-align: center;
+  width: 50%;
+  min-height: 25%;
+  border: 1px solid #999;
+  border-radius: 20px;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 10px;
+  box-sizing: border-box;
+  -webkit-box-shadow: 0px 0px 20px 4px rgba(73, 74, 74, 0.71);
+  -moz-box-shadow: 0px 0px 20px 4px rgba(73, 74, 74, 0.71);
+  box-shadow: 0px 0px 20px 4px rgba(73, 74, 74, 0.71);
+}
+#dialog.visible {
+  display: flex;
+}
+#dialog p,
+#dialog ul {
+  width: 100%;
+}
+#dialog ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+#dialog ul li {
+  background-color: orange;
+  border-radius: 8px;
+  border: 4px solid darkorange;
+  margin: 8px 0 0;
+  box-sizing: border-box;
+  padding: 2px 0;
+}
+#dialog ul li.correct {
+  background-color: green;
+  border-color: darkgreen;
+  color: #fff;
+}
+#dialog ul li.wrong {
+  background-color: red;
+  color: #fff;
+  border-color: darkred;
+}
+#dialog ul li span {
+  font-weight: 700;
+}
+
+/*# sourceMappingURL=/src.a2b27638.css.map */

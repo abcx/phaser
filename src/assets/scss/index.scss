@@ -1,17 +1,36 @@
 body {
   margin: 0;
   user-select: none;
-  font-family: 'Bungee', cursive;
+  font-family: "Bungee", cursive;
+  background-color: #000;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
 }
 
 #stage {
   background: #000;
-  width: 1120px;
-  height: 910px;
+  width: 100%;
+  height: 100%;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+
+  &.start-page {
+    background: lightgreen;
+
+    #debug,
+    label[for="debug"],
+    #panel {
+      display: none;
+    }
+  }
+}
+
+canvas {
+    margin: auto;
+    display: block;
 }
 
 label {
@@ -37,6 +56,7 @@ label {
   right: 160px;
 }
 
+.game-start,
 .game-over {
   position: absolute;
   top: 50%;
@@ -49,6 +69,9 @@ label {
   &.visible {
     display: block;
   }
+}
+.game-start {
+  color: #000;
 }
 
 #dialog {

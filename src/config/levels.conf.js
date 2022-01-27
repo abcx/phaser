@@ -5,6 +5,7 @@ const standard = {
   player: "player",
   enemies: "enemies",
   tileNames: tileNames,
+  playerPosition: { x: 30, y: 800 },
   background: [
     {
       key: "sky",
@@ -34,5 +35,5 @@ export default {
   Level_003: { ...standard, background: "bcgrAsia.jpeg" },
   Level_004: standard,
   Level_005: standard,
-  Level_006: { ...standard, background: "noce-poce.jpg" },
+  Level_006: { ...standard, background: "noce-poce.jpg", playerPosition: { x: 30, y: 300 } },
 };

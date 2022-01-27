@@ -76,10 +76,9 @@ export default function create(scene) {
   } else {
     // wait for 'unlocked' to fire and then play
     scene.sound.once(Phaser.Sound.Events.UNLOCKED, () => {
-        scene.fx.musicGame.play();
+      scene.fx.musicGame.play();
     });
   }
-
 
   // prepare scene
   scene.map = scene.make.tilemap({ key: scene.level });
@@ -90,7 +89,11 @@ export default function create(scene) {
 
   //   scene.map.createLayer("background", scene.tileset, 0, 0);
 
-  scene.player = new Player(scene, 30, 150).collideWith(scene.platform);
+  scene.player = new Player(
+    scene,
+    levelsConf[scene.level].playerPosition.x,
+    levelsConf[scene.level].playerPosition.y
+  ).collideWith(scene.platform);
   scene.enemies = new Enemy(scene).collideWith(scene.platform);
   scene.coins = new Coin(scene).collideWith(scene.player.sprite);
   scene.diamonds = new Diamond(scene).collideWith(scene.player.sprite);
@@ -104,18 +107,24 @@ export default function create(scene) {
   //     console.log(container);
   //   });
 
-  scene.input.once(
-    "pointerdown",
-    function (event) {
-      const L = increaseLevelNumber(scene);
-      console.log(`Go to ${L}`);
-      resetScore();
-      if (L) {
-        scene.scene.start(L);
-      } else {
-        scene.scene.start("GameOver");
-      }
-    },
-    scene
-  );
+  scene.input.keyboard.on(Phaser.Events, function (event) {
+    console.log(event.key);
+  });
+
+  // keyboard
+  const keyObj = scene.input.keyboard.addKey("N"); // Get key object
+
+  keyObj.on("up", function (event) {
+    const L = increaseLevelNumber(scene);
+
+    console.log(`Go to ${L}`);
+
+    resetScore();
+
+    if (L) {
+      scene.scene.start(L);
+    } else {
+      scene.scene.start("GameOver");
+    }
+  });
 }

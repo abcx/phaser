@@ -26,6 +26,7 @@ export default function gameOver(scene, collider) {
         scene.time.delayedCall(250, function() {
             scene.cameras.main.fade(250);
         }, [], this);
+
         if (checkLives()) {
             // restart game
             scene.time.delayedCall(500, function() {

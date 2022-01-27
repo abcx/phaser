@@ -6,17 +6,19 @@
   "scripts": {
     "start": "npm run clean && npm run build",
     "build": "node scripts/start.js",
-    "dev": "parcel watch *.js",
-    "clean": "del-cli --force ./build ./.cache"
+    "clean": "del-cli --force ./build ./.cache",
+    "dev": "parcel watch *.js, *.scss, *.json",
+    "server": "browser-sync start --server --no-notify --files \".\""
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "phaser": "3.52.0"
+    "phaser": "^3.55.2"
   },
   "devDependencies": {
     "del-cli": "^4.0.1",
+    "marked": "^4.0.12",
     "parcel-bundler": "1.12.4",
     "sass": "1.32.5"
   }

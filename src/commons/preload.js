@@ -2,53 +2,53 @@ import levelsConf from "../config/levels.conf";
 import generateAnimations from "../config/animations";
 
 export default function preload(scene) {
-  const isParallaxBcgr = Array.isArray(levelsConf[scene.level].background);
+  const isParallaxBcgr = Array.isArray(levelsConf[scene.scene.key].background);
 
   if (isParallaxBcgr) {
     // load parallax background
-    levelsConf[scene.level].background.forEach((el) => {
-      scene.load.image(el.key + scene.level, `assets/${el.value}`);
+    levelsConf[scene.scene.key].background.forEach((el) => {
+      scene.load.image(el.key + scene.scene.key, `assets/${el.value}`);
     });
   } else {
     // load single image background
     scene.load.image(
-      "background" + scene.level,
-      `assets/${levelsConf[scene.level].background}`
+      "background" + scene.scene.key,
+      `assets/${levelsConf[scene.scene.key].background}`
     );
   }
 
   // load tiles spritesheet
   scene.load.spritesheet(
-    `${scene.level}-tiles`,
-    `assets/${levelsConf[scene.level].tiles}.png`,
+    `${scene.scene.key}-tiles`,
+    `assets/${levelsConf[scene.scene.key].tiles}.png`,
     {
       frameWidth: 70,
       frameHeight: 70,
     }
   );
   // load sounds
-  scene.load.audio('coin-' + scene.level, './assets/coin.mp3');
-  scene.load.audio('diamond-' + scene.level, './assets/diamond.mp3');
-  scene.load.audio('flag-' + scene.level, './assets/flag.mp3');
-  scene.load.audio('enemyHit-' + scene.level, './assets/enemy-hit.mp3');
-  scene.load.audio('openDialog-' + scene.level, './assets/open-dialog.mp3');
-  scene.load.audio('playerHit-' + scene.level, './assets/player-hit.mp3');
-  scene.load.audio('musicGame-' + scene.level, './assets/music-game.mp3');
+  scene.load.audio('coin-' + scene.scene.key, './assets/coin.mp3');
+  scene.load.audio('diamond-' + scene.scene.key, './assets/diamond.mp3');
+  scene.load.audio('flag-' + scene.scene.key, './assets/flag.mp3');
+  scene.load.audio('enemyHit-' + scene.scene.key, './assets/enemy-hit.mp3');
+  scene.load.audio('openDialog-' + scene.scene.key, './assets/open-dialog.mp3');
+  scene.load.audio('playerHit-' + scene.scene.key, './assets/player-hit.mp3');
+  scene.load.audio('musicGame-' + scene.scene.key, './assets/music-game.mp3');
 
   // load level data
-  scene.load.tilemapTiledJSON(scene.level, `./assets/${scene.level}.json`);
+  scene.load.tilemapTiledJSON(scene.scene.key, `./assets/${scene.scene.key}.json`);
 
   // load atlas file for Player
   scene.load.atlas(
     "atlas",
-    `./assets/${levelsConf[scene.level].player}.png`,
-    `./assets/${levelsConf[scene.level].player}_atlas.json`
+    `./assets/${levelsConf[scene.scene.key].player}.png`,
+    `./assets/${levelsConf[scene.scene.key].player}_atlas.json`
   );
   // load atlas file for enemies
   scene.load.atlas(
     "enemies",
-    `./assets/${levelsConf[scene.level].enemies}.png`,
-    `./assets/${levelsConf[scene.level].enemies}_atlas.json`
+    `./assets/${levelsConf[scene.scene.key].enemies}.png`,
+    `./assets/${levelsConf[scene.scene.key].enemies}_atlas.json`
   );
   // generate animations
   scene.load.on("complete", () => {

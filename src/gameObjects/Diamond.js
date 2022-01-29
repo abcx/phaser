@@ -14,7 +14,7 @@ class Diamond {
 
     for (const coin of coinObjects) {
       this.coins
-        .create(coin.x, coin.y, `${this.scene.level}-tiles`, 9)
+        .create(coin.x, coin.y, `${this.scene.scene.key}-tiles`, 9)
         .setOrigin(0, 1)
         .setDepth(-1);
     }

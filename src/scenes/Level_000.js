@@ -3,8 +3,6 @@ import create from "../commons/create";
 import update from "../commons/update";
 
 class Level_000 extends Phaser.Scene {
-  level = "Level_000";
-
   constructor() {
     super("Level_000");
   }

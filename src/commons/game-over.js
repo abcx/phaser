@@ -1,25 +1,27 @@
 import resetScore from '../ui/resetScore';
-import { decreaseLives, checkLives } from '../ui/decreaseLives';
+import { decreaseLives } from '../ui/decreaseLives';
+import { checkLives } from '../ui/checkLives';
 
 export default function gameOver(scene, collider) {
 
-    decreaseLives();
-
-    scene.player.die();
+    const playerDied = scene.player.die();
     scene.input.keyboard.shutdown();
+
+    if (playerDied) {
+        decreaseLives();
+    }
 
     scene.physics.world.removeCollider(scene.player.collider);
     scene.physics.world.removeCollider(collider);
-
-    // setTimeout(() => {
-    //     scene.scene.start('GameOver');
-    // }, 1500);
 
     // shake the camera
     scene.cameras.main.shake(500);
 
     // play sound
     scene.fx.playerHit.play();
+
+    // stop music
+    scene.fx.musicGame.stop();
 
     setTimeout(_ => {
         // fade camera
@@ -36,7 +38,6 @@ export default function gameOver(scene, collider) {
         } else {
             scene.scene.start('GameOver');
         }
-        // reset camera effects
-        scene.cameras.main.resetFX();
+
     }, 2534);
 };

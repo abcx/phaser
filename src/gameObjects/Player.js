@@ -33,7 +33,7 @@ class Player {
 
     checkTileType(player, tile) {
         // console.log('checkTileType', tile.index)
-        const T = levelsConf[this.scene.level].tileNames;
+        const T = levelsConf[this.scene.scene.key].tileNames;
 
         switch (tile.index) {
             case T.LAVA:
@@ -44,7 +44,7 @@ class Player {
     }
 
     gameOver() {
-        gameOver(this.scene, this.collider);
+        gameOver(this.scene, this.collider, true);
     }
 
     reFollowPlayer() {
@@ -86,6 +86,7 @@ class Player {
         this.sprite.setVelocity(0, -350);
         this.sprite.play('die', true);
         this.sprite.setCollideWorldBounds(false);
+        return true;
     }
 }
 

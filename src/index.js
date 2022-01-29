@@ -8,6 +8,7 @@ import Level_005 from "./scenes/Level_005.js";
 import Level_006 from "./scenes/Level_006.js";
 import GameStart from "./scenes/GameStart.js";
 import GameOver from "./scenes/GameOver.js";
+import ScorePage from './scenes/ScorePage';
 
 import "./assets/scss/index.scss";
 
@@ -60,6 +61,7 @@ const config = {
     Level_004,
     Level_005,
     Level_006,
+    ScorePage,
     GameOver,
   ],
   audio: {

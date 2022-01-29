@@ -12,8 +12,8 @@ class GameStart extends Phaser.Scene {
             "pointerdown",
             function (event) {
                 cnv.style.opacity = 1;
-                document.getElementsByClassName('game-start')[0].classList.remove('visible');
-                document.querySelector('#stage').classList.remove('start-page');
+                document.querySelector('.game-start').classList.remove('visible');
+                document.querySelector('#stage').classList.remove('visible');
                 this.scene.start("Level_000");
             },
             this

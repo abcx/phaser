@@ -2,7 +2,7 @@ import levelsConf from "../config/levels.conf";
 
 export default function increaseLevelNumber(scene) {
   const levels = Object.keys(levelsConf);
-  let levelNumber = Number(scene.level.split("_")[1]);
+  let levelNumber = Number(scene.scene.key.split("_")[1]);
   levelNumber = String(++levelNumber);
 
   for (let i = 2; i < 4; i++) {

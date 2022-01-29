@@ -12,23 +12,31 @@ import createAlignedBcgr from "../commons/createAlignedBcgr";
 import levelsConf from "../config/levels.conf";
 
 export default function create(scene) {
+  if (!levelsConf[scene.scene.key]) {
+    return false;
+  }
   const noCollisionTiles = [tiles.EMPTY, tiles.FLAG_LEFT];
 
   const width = scene.scale.width;
   const height = scene.scale.height;
   const totalWidth = width * 10;
-  const isParallaxBcgr = Array.isArray(levelsConf[scene.level].background);
+  const isParallaxBcgr = Array.isArray(levelsConf[scene.scene.key].background);
 
   if (isParallaxBcgr) {
     // load parallax background
-    levelsConf[scene.level].background.forEach((el, idx) => {
+    levelsConf[scene.scene.key].background.forEach((el, idx) => {
       if (idx === 0) {
         scene.add
-          .image(width * 0.5, height * 0.5, el.key + scene.level)
+          .image(width * 0.5, height * 0.5, el.key + scene.scene.key)
           .setScrollFactor(0)
           .setDepth(-1);
       } else {
-        createAlignedBcgr(scene, totalWidth, el.key + scene.level, el.scroll);
+        createAlignedBcgr(
+          scene,
+          totalWidth,
+          el.key + scene.scene.key,
+          el.scroll
+        );
       }
     });
   } else {
@@ -36,7 +44,7 @@ export default function create(scene) {
     let image = scene.add.image(
       scene.cameras.main.width / 2,
       scene.cameras.main.height / 2,
-      "background" + scene.level
+      "background" + scene.scene.key
     );
     let scaleX = scene.cameras.main.width / image.width;
     let scaleY = scene.cameras.main.height / image.height;
@@ -58,14 +66,14 @@ export default function create(scene) {
   // set sounds
   scene.sound.pauseOnBlur = false;
   scene.fx = {};
-  scene.fx.coin = scene.sound.add("coin-" + scene.level);
-  scene.fx.diamond = scene.sound.add("diamond-" + scene.level);
-  scene.fx.flag = scene.sound.add("flag-" + scene.level);
-  scene.fx.enemyHit = scene.sound.add("enemyHit-" + scene.level);
-  scene.fx.openDialog = scene.sound.add("openDialog-" + scene.level);
-  scene.fx.playerHit = scene.sound.add("playerHit-" + scene.level);
-  scene.fx.musicGame = scene.sound.add("musicGame-" + scene.level, {
-    volume: 0.2,
+  scene.fx.coin = scene.sound.add("coin-" + scene.scene.key);
+  scene.fx.diamond = scene.sound.add("diamond-" + scene.scene.key);
+  scene.fx.flag = scene.sound.add("flag-" + scene.scene.key);
+  scene.fx.enemyHit = scene.sound.add("enemyHit-" + scene.scene.key);
+  scene.fx.openDialog = scene.sound.add("openDialog-" + scene.scene.key);
+  scene.fx.playerHit = scene.sound.add("playerHit-" + scene.scene.key);
+  scene.fx.musicGame = scene.sound.add("musicGame-" + scene.scene.key, {
+    volume: 1.0,
     loop: true,
   });
 
@@ -81,8 +89,11 @@ export default function create(scene) {
   }
 
   // prepare scene
-  scene.map = scene.make.tilemap({ key: scene.level });
-  scene.tileset = scene.map.addTilesetImage("tiles", `${scene.level}-tiles`);
+  scene.map = scene.make.tilemap({ key: scene.scene.key });
+  scene.tileset = scene.map.addTilesetImage(
+    "tiles",
+    `${scene.scene.key}-tiles`
+  );
 
   scene.platform = scene.map.createLayer("platforms", scene.tileset, 0, 0);
   scene.platform.setCollisionByExclusion(noCollisionTiles, true);
@@ -91,8 +102,8 @@ export default function create(scene) {
 
   scene.player = new Player(
     scene,
-    levelsConf[scene.level].playerPosition.x,
-    levelsConf[scene.level].playerPosition.y
+    levelsConf[scene.scene.key].playerPosition.x,
+    levelsConf[scene.scene.key].playerPosition.y
   ).collideWith(scene.platform);
   scene.enemies = new Enemy(scene).collideWith(scene.platform);
   scene.coins = new Coin(scene).collideWith(scene.player.sprite);
@@ -103,28 +114,39 @@ export default function create(scene) {
 
   scene.inputs = scene.input.keyboard.createCursorKeys();
 
+  // reset camera
+  scene.cameras.main.resetFX();
+
   //   scene.input.on("pointerdown", function (container) {
   //     console.log(container);
   //   });
 
-  scene.input.keyboard.on(Phaser.Events, function (event) {
+  scene.input.keyboard.on(Phaser.Events, (event) => {
     console.log(event.key);
   });
 
   // keyboard
-  const keyObj = scene.input.keyboard.addKey("N"); // Get key object
+  const forceNextLevel = scene.input.keyboard.addKey("N"); // Get key object
+  const forceEndOfGame = scene.input.keyboard.addKey("E"); // Get key object
 
-  keyObj.on("up", function (event) {
+  forceNextLevel.on("up", (event) => {
     const L = increaseLevelNumber(scene);
 
     console.log(`Go to ${L}`);
 
     resetScore();
 
+    // stop music
+    scene.fx.musicGame.stop();
+
     if (L) {
       scene.scene.start(L);
     } else {
-      scene.scene.start("GameOver");
+      scene.scene.start("ScorePage");
     }
+  });
+
+  forceEndOfGame.on("up", (event) => {
+    scene.scene.start("ScorePage");
   });
 }

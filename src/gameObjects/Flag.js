@@ -18,8 +18,8 @@ class Flag {
       .create(
         flagElement.x,
         flagElement.y - flagElement.height,
-        `${this.scene.level}-tiles`,
-        levelsConf[this.scene.level].tileNames.EXIT
+        `${this.scene.scene.key}-tiles`,
+        levelsConf[this.scene.scene.key].tileNames.EXIT
       )
       .setOrigin(0)
       .setDepth(-1);
@@ -49,8 +49,9 @@ class Flag {
         const L = increaseLevelNumber(this.scene);
 
         if (L) {
-            console.log(`Go to ${L}`);
             rememberScore(readScore());
+
+            console.log(`Go to ${L}`);
 
             this.scene.fx.flag.play();
 
@@ -60,6 +61,7 @@ class Flag {
             }, [], this);
 
             setTimeout(_ => {
+                this.scene.fx.musicGame.stop();
                 this.scene.scene.start(L);
             }, 2834); // jingel length [ms]
         } else {

@@ -25,8 +25,8 @@ class InfoBox {
         .create(
           box.x,
           box.y,
-          `${this.scene.level}-tiles`,
-          levelsConf[this.scene.level].tileNames.INFO_BOX
+          `${this.scene.scene.key}-tiles`,
+          levelsConf[this.scene.scene.key].tileNames.INFO_BOX
         )
         .setName(`box${idx}`)
         .setOrigin(0, 1)
@@ -48,7 +48,7 @@ class InfoBox {
   }
 
   openDialog(player, tile) {
-    const puzzle = puzzles[this.scene.level][tile.name];
+    const puzzle = puzzles[this.scene.scene.key][tile.name];
 
     if (
       this.openedBoxes.indexOf(tile.name) === -1 &&

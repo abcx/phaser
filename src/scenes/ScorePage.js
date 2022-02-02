@@ -8,12 +8,12 @@ class ScorePage extends Phaser.Scene {
   }
 
   create() {
-    // create(this);
-
     hideCanvas();
 
     // stop music
     this.sound.stopAll();
+
+// set("platform", JSON.stringify([{player: 'A', score: 4}, {player: 'B', score: 2}]));
 
     document.querySelector("#stage").classList.add("visible");
     document.querySelector(".score-page").classList.add("visible");
@@ -25,19 +25,23 @@ class ScorePage extends Phaser.Scene {
     let topScores = get("platform");
 
     if (topScores) {
+      // read top list
       topScores = JSON.parse(topScores);
+
+      // get player name from dialog
+      const playerName = "C";
+
+      // add current player score
+      topScores.push({ player: playerName, score });
+
+      // create HTML top list
+      topScores = createTopList(topScores);
+
+      // save top scores
+      set("platform", JSON.stringify(topScores));
+
+      console.log('loaded', get("platform"), {topScores});
     }
-
-    // get player name
-    const playerName = "C";
-
-    // create top list
-    topScores = createTopList({ player: playerName, score }, topScores);
-
-    // save top scores
-    set("platform", JSON.stringify(topScores));
-
-    console.log({ topScores }, JSON.parse(get("platform")));
 
     this.input.once(
       "pointerdown",
@@ -51,22 +55,31 @@ class ScorePage extends Phaser.Scene {
   }
 }
 
-const createTopList = (playerScore, topScores) => {
+const createTopList = (scores) => {
   const ul = document.querySelector(".score-page ul");
   let li;
+  let out = [];
 
-  let scores = topScores.concat(playerScore).sort((a, b) => a.score < b.score);
+  scores.sort((a, b) => b.score - a.score);
 
-  for (let i = 1; i < 11; i++) {
+  for (let i = 0; i < 10; i++) {
     li = document.createElement("li");
 
     if (scores[i]) {
-      li.textContent = `${i}) ${scores[i].player} - ${scores[i].score}`;
+      li.textContent = `${i + 1}) ${scores[i].player} - ${scores[i].score}`;
+      out.push({
+          player: scores[i].player,
+          score: scores[i].score
+      });
+    } else {
+        out.push({
+            player: '',
+            score: 0
+        });
     }
     ul.appendChild(li);
   }
-  console.log({ playerScore, topScores, scores }, scores.slice(9));
-  return scores; //.slice(9);
+  return out;
 };
 
 export default ScorePage;

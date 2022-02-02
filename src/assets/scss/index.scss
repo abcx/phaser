@@ -18,7 +18,9 @@ body {
   transform: translate(-50%, -50%);
 
   &.visible {
-    background: lightgreen;
+    // background: lightgreen;
+    background-image: url("/build/assets/startPage.jpeg");
+    background-size: cover;
 
     #debug,
     label[for="debug"],
@@ -29,8 +31,8 @@ body {
 }
 
 canvas {
-    margin: auto;
-    display: block;
+  margin: auto;
+  display: block;
 }
 
 label {
@@ -63,7 +65,7 @@ label {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  font-size: 21px;
+  font-size: 30px;
   color: #fff;
   display: none;
 
@@ -71,9 +73,21 @@ label {
     display: block;
   }
 }
-.game-start,
 .score-page {
-  color: #000;
+    background: rgba(255, 255, 255, 0.4);
+    color: #000;
+    padding: 20px;
+    box-sizing: border-box;
+    border-radius: 20px;
+
+    ul {
+        list-style-type: none;
+        padding: 0;
+        margin: 20px 0 0;
+    }
+}
+.game-start {
+  margin-top: 36px;
 }
 
 #dialog {

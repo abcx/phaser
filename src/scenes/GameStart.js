@@ -1,3 +1,5 @@
+import { get } from "../commons/storage";
+
 class GameStart extends Phaser.Scene {
 
     constructor () {
@@ -7,6 +9,8 @@ class GameStart extends Phaser.Scene {
     create() {
         let cnv = document.querySelector('canvas');
         cnv.style.opacity = 0;
+
+        // console.log('>>> SCORES', get("platform"));
 
         this.input.once(
             "pointerdown",

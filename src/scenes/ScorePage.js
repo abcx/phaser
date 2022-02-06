@@ -13,45 +13,61 @@ class ScorePage extends Phaser.Scene {
     // stop music
     this.sound.stopAll();
 
-// set("platform", JSON.stringify([{player: 'A', score: 4}, {player: 'B', score: 2}]));
+    // set("platform", JSON.stringify([{player: 'A', score: 4}, {player: 'B', score: 2}]));
 
     document.querySelector("#stage").classList.add("visible");
     document.querySelector(".score-page").classList.add("visible");
 
-    // read score
-    const score = readScore();
+    const prompt = document.querySelector("#prompt");
+    const input = prompt.querySelector("input");
+    const form = document.querySelector("form");
 
-    // read top scores
-    let topScores = get("platform");
+    prompt.classList.add("visible");
+    input.focus();
 
-    if (topScores) {
-      // read top list
-      topScores = JSON.parse(topScores);
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
 
-      // get player name from dialog
-      const playerName = "C";
+      // get player name from prompt
+      const playerName = input.value;
 
-      // add current player score
-      topScores.push({ player: playerName, score });
+      if (!!playerName) {
+        prompt.classList.remove("visible");
 
-      // create HTML top list
-      topScores = createTopList(topScores);
+        // read score
+        const score = readScore();
 
-      // save top scores
-      set("platform", JSON.stringify(topScores));
+        // read top scores
+        let topScores = get("platform");
 
-      console.log('loaded', get("platform"), {topScores});
-    }
+        if (topScores) {
+          // read top list
+          topScores = JSON.parse(topScores);
 
-    this.input.once(
-      "pointerdown",
-      function (event) {
-        document.querySelector(".score-page").classList.remove("visible");
-        document.querySelector("#stage").classList.remove("score-page");
-        this.scene.start("GameOver");
-      },
-      this
-    );
+          // add current player score
+          topScores.push({ player: playerName, score });
+
+          // create HTML top list
+          topScores = createTopList(topScores);
+
+          // save top scores
+          set("platform", JSON.stringify(topScores));
+
+          console.log("loaded", get("platform"), { topScores });
+
+          // check for mouse pointer
+          this.input.once(
+            "pointerdown",
+            function (event) {
+              document.querySelector(".score-page").classList.remove("visible");
+              document.querySelector("#stage").classList.remove("score-page");
+              this.scene.start("GameOver");
+            },
+            this
+          );
+        }
+      }
+    });
   }
 }
 
@@ -68,14 +84,14 @@ const createTopList = (scores) => {
     if (scores[i]) {
       li.textContent = `${i + 1}) ${scores[i].player} - ${scores[i].score}`;
       out.push({
-          player: scores[i].player,
-          score: scores[i].score
+        player: scores[i].player,
+        score: scores[i].score,
       });
     } else {
-        out.push({
-            player: '',
-            score: 0
-        });
+      out.push({
+        player: "",
+        score: 0,
+      });
     }
     ul.appendChild(li);
   }

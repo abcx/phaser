@@ -17,26 +17,20 @@ export default function preload(scene) {
     );
   }
 
-  // load tiles spritesheet
-  scene.load.spritesheet(
-    `${scene.scene.key}-tiles`,
-    `assets/${levelsConf[scene.scene.key].tiles}.png`,
-    {
-      frameWidth: 70,
-      frameHeight: 70,
-    }
-  );
   // load sounds
-  scene.load.audio('coin-' + scene.scene.key, './assets/coin.mp3');
-  scene.load.audio('diamond-' + scene.scene.key, './assets/diamond.mp3');
-  scene.load.audio('flag-' + scene.scene.key, './assets/flag.mp3');
-  scene.load.audio('enemyHit-' + scene.scene.key, './assets/enemy-hit.mp3');
-  scene.load.audio('openDialog-' + scene.scene.key, './assets/open-dialog.mp3');
-  scene.load.audio('playerHit-' + scene.scene.key, './assets/player-hit.mp3');
-  scene.load.audio('musicGame-' + scene.scene.key, './assets/music-game.mp3');
+  scene.load.audio("coin-" + scene.scene.key, "./assets/coin.mp3");
+  scene.load.audio("diamond-" + scene.scene.key, "./assets/diamond.mp3");
+  scene.load.audio("flag-" + scene.scene.key, "./assets/flag.mp3");
+  scene.load.audio("enemyHit-" + scene.scene.key, "./assets/enemy-hit.mp3");
+  scene.load.audio("openDialog-" + scene.scene.key, "./assets/open-dialog.mp3");
+  scene.load.audio("playerHit-" + scene.scene.key, "./assets/player-hit.mp3");
+  scene.load.audio("musicGame-" + scene.scene.key, "./assets/music-game.mp3");
 
   // load level data
-  scene.load.tilemapTiledJSON(scene.scene.key, `./assets/${scene.scene.key}.json`);
+  scene.load.tilemapTiledJSON(
+    scene.scene.key,
+    `./assets/${scene.scene.key}.json`
+  );
 
   // load atlas file for Player
   scene.load.atlas(
@@ -50,6 +44,34 @@ export default function preload(scene) {
     `./assets/${levelsConf[scene.scene.key].enemies}.png`,
     `./assets/${levelsConf[scene.scene.key].enemies}_atlas.json`
   );
+
+  // load tiles spritesheet
+  scene.load.setPath("assets");
+
+  scene.load.spritesheet([
+    {
+      key: `tiles`,
+      frameConfig: { frameWidth: 70, frameHeight: 70, endFrame: 23 },
+    },
+    {
+      key: `tilesAsia`,
+      frameConfig: { frameWidth: 70, frameHeight: 70, endFrame: 46 },
+    },
+    {
+      key: `tilesMania`,
+      frameConfig: { frameWidth: 70, frameHeight: 70 },
+    },
+  ]);
+
+  //   scene.load.spritesheet(
+  //     `${scene.scene.key}-tiles`,
+  //     `assets/${levelsConf[scene.scene.key].tiles[0]}.png`,
+  //     {
+  //       frameWidth: 70,
+  //       frameHeight: 70,
+  //     }
+  //   );
+
   // generate animations
   scene.load.on("complete", () => {
     generateAnimations(scene);

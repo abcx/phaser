@@ -1,4 +1,5 @@
 import increaseScore from "../ui/increaseScore";
+import { getTilesetData, checkGid } from "../commons/checkGid";
 
 class Coin {
   constructor(scene) {
@@ -12,9 +13,13 @@ class Coin {
     // You could also use the same object layer and differentiate between different objects by custom properties
     const coinObjects = this.scene.map.getObjectLayer("coins").objects;
 
+    let { firstGids, tilesets } = getTilesetData(this.scene);
+
     for (const coin of coinObjects) {
+      const tile = checkGid(firstGids, tilesets, coin.gid);
+
       this.coins
-        .create(coin.x, coin.y, `${this.scene.scene.key}-tiles`, 8)
+        .create(coin.x, coin.y, tile.key, tile.gid)
         .setOrigin(0, 1)
         .setDepth(-1);
     }

@@ -92,8 +92,16 @@ export default function create(scene) {
   scene.map = scene.make.tilemap({ key: scene.scene.key });
   scene.tileset = scene.map.addTilesetImage(
     "tiles",
-    `${scene.scene.key}-tiles`
+    `tiles`
   );
+//   scene.tileset = scene.map.addTilesetImage(
+//     "tilesAsia",
+//     `tilesAsia`
+//   );
+//   scene.tileset = scene.map.addTilesetImage(
+//     "tilesMania",
+//     `tilesMania`
+//   );
 
   scene.platform = scene.map.createLayer("platforms", scene.tileset, 0, 0);
   scene.platform.setCollisionByExclusion(noCollisionTiles, true);

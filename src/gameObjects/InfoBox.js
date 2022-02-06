@@ -1,6 +1,7 @@
 import levelsConf from "../config/levels.conf";
 import puzzles from "../ui/puzzles";
 import increaseScore from "../ui/increaseScore";
+import { getTilesetData, checkGid } from "../commons/checkGid";
 
 class InfoBox {
   constructor(scene) {
@@ -20,20 +21,34 @@ class InfoBox {
       ? this.scene.map.getObjectLayer("info").objects
       : [];
 
+    let { firstGids, tilesets } = getTilesetData(this.scene);
+
     for (const box of infoElement) {
+      const tile = checkGid(firstGids, tilesets, box.gid);
+
       this.infoBox
-        .create(
-          box.x,
-          box.y,
-          `${this.scene.scene.key}-tiles`,
-          levelsConf[this.scene.scene.key].tileNames.INFO_BOX
-        )
+        .create(box.x, box.y, tile.key, tile.gid)
         .setName(`box${idx}`)
         .setOrigin(0, 1)
         .setDepth(-1);
 
       idx++;
     }
+
+    // for (const box of infoElement) {
+    //   this.infoBox
+    //     .create(
+    //       box.x,
+    //       box.y,
+    //       `${this.scene.scene.key}-tiles`,
+    //       levelsConf[this.scene.scene.key].tileNames.INFO_BOX
+    //     )
+    //     .setName(`box${idx}`)
+    //     .setOrigin(0, 1)
+    //     .setDepth(-1);
+
+    //   idx++;
+    // }
   }
 
   collideWith(gameObject) {

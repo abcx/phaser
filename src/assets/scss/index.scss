@@ -20,7 +20,7 @@ body {
   &.visible {
     // background: lightgreen;
     background-image: url("/build/assets/startPage.jpeg");
-    background-size: cover;
+    background-size: 110%;
 
     #debug,
     label[for="debug"],
@@ -74,24 +74,26 @@ label {
   }
 }
 .score-page {
-    background: rgba(255, 255, 255, 0.4);
-    color: #000;
-    padding: 20px;
-    box-sizing: border-box;
-    border-radius: 20px;
+  background: rgba(255, 255, 255, 0.4);
+  color: #000;
+  padding: 20px;
+  box-sizing: border-box;
+  border-radius: 20px;
 
-    ul {
-        list-style-type: none;
-        padding: 0;
-        margin: 20px 0 0;
-    }
+  ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 20px 0 0;
+  }
 }
 .game-start {
   margin-top: 36px;
 }
 
-#dialog {
+#dialog,
+#prompt {
   position: absolute;
+  z-index: 1;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -151,5 +153,21 @@ label {
         font-weight: 700;
       }
     }
+  }
+}
+#prompt {
+  input,
+  button {
+    font-family: "Bungee", cursive;
+    font-size: 21px;
+    text-align: center;
+  }
+
+  label {
+    position: unset;
+    bottom: unset;
+    left: unset;
+    height: 55px;
+    display: inline-block;
   }
 }

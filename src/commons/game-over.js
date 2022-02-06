@@ -36,7 +36,7 @@ export default function gameOver(scene, collider) {
                 scene.scene.restart();
             }, [], scene);
         } else {
-            scene.scene.start('GameOver');
+            scene.scene.start('ScorePage');
         }
 
     }, 2534);

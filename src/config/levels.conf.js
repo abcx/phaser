@@ -1,7 +1,11 @@
 import tileNames from "../commons/tileNames";
 
 const standard = {
-  tiles: "tiles",
+  tiles: [
+    "tiles",
+    "tilesAsia",
+    "tilesMania"
+  ],
   player: "player",
   enemies: "enemies",
   tileNames: tileNames,

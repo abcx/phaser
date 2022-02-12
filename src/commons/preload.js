@@ -1,5 +1,6 @@
 import levelsConf from "../config/levels.conf";
 import generateAnimations from "../config/animations";
+import { getTilesetData, checkGid } from "../commons/checkGid";
 
 export default function preload(scene) {
   const isParallaxBcgr = Array.isArray(levelsConf[scene.scene.key].background);
@@ -48,29 +49,16 @@ export default function preload(scene) {
   // load tiles spritesheet
   scene.load.setPath("assets");
 
-  scene.load.spritesheet([
-    {
-      key: `tiles`,
-      frameConfig: { frameWidth: 70, frameHeight: 70, endFrame: 23 },
-    },
-    {
-      key: `tilesAsia`,
-      frameConfig: { frameWidth: 70, frameHeight: 70, endFrame: 46 },
-    },
-    {
-      key: `tilesMania`,
-      frameConfig: { frameWidth: 70, frameHeight: 70 },
-    },
-  ]);
+  let tilesets = [];
 
-  //   scene.load.spritesheet(
-  //     `${scene.scene.key}-tiles`,
-  //     `assets/${levelsConf[scene.scene.key].tiles[0]}.png`,
-  //     {
-  //       frameWidth: 70,
-  //       frameHeight: 70,
-  //     }
-  //   );
+  levelsConf[scene.scene.key].tiles.map((tilesetName) => {
+    tilesets.push({
+        key: tilesetName,
+        frameConfig: { frameWidth: 70, frameHeight: 70 }
+    });
+  });
+
+  scene.load.spritesheet(tilesets);
 
   // generate animations
   scene.load.on("complete", () => {

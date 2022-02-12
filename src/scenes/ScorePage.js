@@ -73,6 +73,11 @@ class ScorePage extends Phaser.Scene {
 
 const createTopList = (scores) => {
   const ul = document.querySelector(".score-page ul");
+
+  if (ul.querySelectorAll("li").length) {
+    return scores;
+  }
+
   let li;
   let out = [];
 

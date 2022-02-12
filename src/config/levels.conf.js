@@ -6,8 +6,15 @@ const standard = {
     "tilesAsia",
     "tilesMania"
   ],
+  // player atlas name
   player: "player",
+  // enemies atlas name
   enemies: "enemies",
+  // list of enemies' names
+  enemiesNames: [
+    'snailwalk',
+    'slimewalk'
+  ],
   tileNames: tileNames,
   playerPosition: { x: 30, y: 800 },
   background: [

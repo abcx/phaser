@@ -90,20 +90,14 @@ export default function create(scene) {
 
   // prepare scene
   scene.map = scene.make.tilemap({ key: scene.scene.key });
-  scene.tileset = scene.map.addTilesetImage(
-    "tiles",
-    `tiles`
-  );
-//   scene.tileset = scene.map.addTilesetImage(
-//     "tilesAsia",
-//     `tilesAsia`
-//   );
-//   scene.tileset = scene.map.addTilesetImage(
-//     "tilesMania",
-//     `tilesMania`
-//   );
 
-  scene.platform = scene.map.createLayer("platforms", scene.tileset, 0, 0);
+  let tilesets = [];
+
+  levelsConf[scene.scene.key].tiles.map((tilesetName) => {
+    tilesets.push(scene.map.addTilesetImage(tilesetName, tilesetName));
+  });
+
+  scene.platform = scene.map.createLayer("platforms", tilesets, 0, 0);
   scene.platform.setCollisionByExclusion(noCollisionTiles, true);
 
   //   scene.map.createLayer("background", scene.tileset, 0, 0);

@@ -1,8 +1,18 @@
 import increaseScore from "../ui/increaseScore";
 import gameOver from "../commons/game-over";
 import { getTilesetData, checkGid } from "../commons/checkGid";
+import {
+  getLayersNames,
+  getFrameNamesFromAtlas,
+} from "../commons/getLayersNames";
+import levelsConf from "../config/levels.conf";
+
+const LEFT = 'LEFT';
+const RIGHT = 'RIGHT';
 
 class Enemy {
+  enemiesSpeed = 75;
+
   constructor(scene) {
     this.scene = scene;
     this.enemies = this.scene.physics.add.group();
@@ -14,48 +24,46 @@ class Enemy {
       this
     );
 
-    const enemyObjects1 = this.scene.map.getObjectLayer("enemies1").objects;
-    const enemyObjects2 = this.scene.map.getObjectLayer("enemies2").objects;
+    // get all layer with enemies
+    let enemiesLayersNames = getLayersNames(this.scene, "enemies");
+
+    // get enemies' objects from layers
+    let enemiesLayers = enemiesLayersNames.map((layerName) => {
+      return this.scene.map.getObjectLayer(layerName).objects;
+    });
+    // console.log('ENEMIES', enemiesLayersNames, enemiesLayers)
 
     // let { firstGids, tilesets } = getTilesetData(this.scene);
+    // let tile;
+    let enemyType;
 
-    // for (const enemy of enemyObjects1) {
-    //   const tile = checkGid(firstGids, tilesets, enemy.gid);
+    const frames = getFrameNamesFromAtlas(this.scene, "enemies");
 
-    //   this.enemies
-    //     .create(enemy.x, enemy.y, tile.key, tile.gid)
-    //     .setScale(1.5)
-    //     .setOrigin(0)
-    //     .setDepth(-1);
-    // }
+    // create enemies
+    for (let layer in enemiesLayers) {
+      for (const enemy of enemiesLayers[layer]) {
+        // tile = checkGid(firstGids, tilesets, enemy.gid);
 
-    // for (const enemy of enemyObjects2) {
-    //   const tile = checkGid(firstGids, tilesets, enemy.gid);
+        switch (enemy.gid) {
+          case 1:
+            enemyType = frames[2];
+            break;
+          case 2:
+            enemyType = frames[0];
+            break;
+        }
 
-    //   this.enemies
-    //     .create(enemy.x, enemy.y, tile.key, tile.gid)
-    //     .setScale(1.5)
-    //     .setOrigin(0)
-    //     .setDepth(-1);
-    // }
-
-    for (const enemy of enemyObjects1) {
-      this.enemies
-        .create(enemy.x, enemy.y - enemy.height, "enemies1", "snailwalk1")
-        .setScale(1.5)
-        .setOrigin(0)
-        .setDepth(-1);
-    }
-    for (const enemy of enemyObjects2) {
-      this.enemies
-        .create(enemy.x, enemy.y - enemy.height, "enemies2", "slimewalk1")
-        .setScale(1.5)
-        .setOrigin(0)
-        .setDepth(-1);
+        this.enemies
+          .create(enemy.x, enemy.y - enemy.height, "enemies", enemyType)
+          .setName(enemyType)
+          .setScale(1.5)
+        //   .setOrigin(0)
+          .setDepth(-1);
+      }
     }
 
     for (const enemy of this.enemies.children.entries) {
-      enemy.direction = "RIGHT";
+      enemy.direction = RIGHT;
       enemy.isDed = false;
     }
   }
@@ -69,21 +77,27 @@ class Enemy {
   update() {
     for (const enemy of this.enemies.children.entries) {
       if (enemy.body.blocked.right) {
-        enemy.direction = "LEFT";
+        enemy.direction = LEFT;
       }
 
       if (enemy.body.blocked.left) {
-        enemy.direction = "RIGHT";
+        enemy.direction = RIGHT;
       }
 
-      if (enemy.direction === "RIGHT") {
-        enemy.setVelocityX(100).setFlipX(true);
+      if (enemy.direction === RIGHT) {
+        enemy.setVelocityX(this.enemiesSpeed).setFlipX(true);
       } else {
-        enemy.setVelocityX(-100).setFlipX(false);
+        enemy.setVelocityX(-this.enemiesSpeed).setFlipX(false);
       }
 
-      !enemy.isDed && enemy.play("enemy1Run", true);
-      !enemy.isDed && enemy.play("enemy2Run", true);
+      // play enemies animations
+      levelsConf[this.scene.scene.key].enemiesNames.forEach(
+        (enemyName, idx) => {
+          if (enemy.name === `${enemyName}${idx + 1}`) {
+            !enemy.isDed && enemy.play(`enemyRun_${enemyName}`, true);
+          }
+        }
+      );
     }
   }
 
@@ -96,10 +110,19 @@ class Enemy {
   }
 
   die() {
+    const animNames = Object.keys(this.scene.anims.anims.entries);
+    let currentEnemyAnim;
+
     for (const enemy of this.enemies.children.entries) {
       if (enemy.body.touching.up) {
         enemy.isDed = true;
-        enemy.play("enemyDie", true);
+
+        // find proper enemy die anim name
+        currentEnemyAnim = animNames.find(
+          (name) => enemy.name.indexOf(name.split("_")[1]) !== -1
+        );
+
+        enemy.play(currentEnemyAnim.replace("Run", "Die"), true);
         enemy.on("animationcomplete", () => enemy.destroy());
 
         increaseScore(1);

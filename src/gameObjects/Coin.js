@@ -1,5 +1,6 @@
 import increaseScore from "../ui/increaseScore";
 import { getTilesetData, checkGid } from "../commons/checkGid";
+import { pulse } from "../commons/tweens";
 
 class Coin {
   constructor(scene) {
@@ -22,6 +23,12 @@ class Coin {
         .create(coin.x, coin.y, tile.key, tile.gid)
         .setOrigin(0, 1)
         .setDepth(-1);
+    }
+    // var timeline = this.scene.tweens.createTimeline();
+
+    // animate coins
+    for (const coin of this.coins.children.entries) {
+      pulse(scene, coin);
     }
 
     // --- Or ---

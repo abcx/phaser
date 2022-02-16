@@ -53,8 +53,11 @@ export default function preload(scene) {
 
   levelsConf[scene.scene.key].tiles.map((tilesetName) => {
     tilesets.push({
-        key: tilesetName,
-        frameConfig: { frameWidth: 70, frameHeight: 70 }
+      key: tilesetName,
+      frameConfig: {
+        frameWidth: levelsConf.conf.tileSize,
+        frameHeight: levelsConf.conf.tileSize,
+      },
     });
   });
 

@@ -15,7 +15,6 @@ export default function create(scene) {
   if (!levelsConf[scene.scene.key]) {
     return false;
   }
-  const noCollisionTiles = [tiles.EMPTY, tiles.FLAG_LEFT];
 
   const width = scene.scale.width;
   const height = scene.scale.height;
@@ -23,7 +22,7 @@ export default function create(scene) {
   const isParallaxBcgr = Array.isArray(levelsConf[scene.scene.key].background);
 
   if (isParallaxBcgr) {
-    // load parallax background
+    // set parallax background
     levelsConf[scene.scene.key].background.forEach((el, idx) => {
       if (idx === 0) {
         scene.add
@@ -40,7 +39,7 @@ export default function create(scene) {
       }
     });
   } else {
-    // load single image background
+    // set single image background
     let image = scene.add.image(
       scene.cameras.main.width / 2,
       scene.cameras.main.height / 2,
@@ -97,6 +96,7 @@ export default function create(scene) {
     tilesets.push(scene.map.addTilesetImage(tilesetName, tilesetName));
   });
 
+  const noCollisionTiles = [tiles.EMPTY, tiles.FLAG_LEFT];
   scene.platform = scene.map.createLayer("platforms", tilesets, 0, 0);
   scene.platform.setCollisionByExclusion(noCollisionTiles, true);
 

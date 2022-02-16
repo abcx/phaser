@@ -1,4 +1,7 @@
 import Phaser from "phaser";
+import levelsConf from "./config/levels.conf";
+import "./assets/scss/index.scss";
+
 import Level_000 from "./scenes/Level_000.js";
 import Level_001 from "./scenes/Level_001.js";
 import Level_002 from "./scenes/Level_002.js";
@@ -10,10 +13,8 @@ import GameStart from "./scenes/GameStart.js";
 import GameOver from "./scenes/GameOver.js";
 import ScorePage from './scenes/ScorePage';
 
-import "./assets/scss/index.scss";
-
 let size = {
-  TILE_SIZE: 70,
+  TILE_SIZE: levelsConf.conf.tileSize,
   screenWidth: 0,
   screenHeight: 0,
   windowWidth: 0,
@@ -35,8 +36,6 @@ const getSceneSize = (param) => {
 };
 
 const config = {
-  //   width: 1120,
-  //   height: 910,
   width: getSceneSize(size.windowWidth) * size.TILE_SIZE,
   height: getSceneSize(size.windowHeight) * size.TILE_SIZE,
   parent: "stage",

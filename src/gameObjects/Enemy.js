@@ -93,8 +93,8 @@ class Enemy {
       // play enemies animations
       levelsConf[this.scene.scene.key].enemiesNames.forEach(
         (enemyName, idx) => {
-          if (enemy.name === `${enemyName}${idx + 1}`) {
-            !enemy.isDed && enemy.play(`enemyRun_${enemyName}`, true);
+          if (enemy.name === `${enemyName.name}${idx + 1}`) {
+            !enemy.isDed && enemy.play(`enemyRun_${enemyName.name}`, true);
           }
         }
       );

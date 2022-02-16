@@ -34,9 +34,9 @@ export default (scene) => {
   // Enemies' animations
   levelsConf[scene.scene.key].enemiesNames.forEach((enemyName, idx) => {
     scene.anims.create({
-      key: `enemyRun_${enemyName}`,
+      key: `enemyRun_${enemyName.name}`,
       frames: scene.anims.generateFrameNames("enemies", {
-        prefix: enemyName,
+        prefix: enemyName.name,
         start: 1,
         end: 2,
       }),
@@ -64,5 +64,5 @@ export default (scene) => {
   //     repeat: -1
   // });
 
-  console.log('ANIMS', scene.anims)
+  console.log('ANIMS', scene.anims.anims.entries)
 };

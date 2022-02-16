@@ -1,22 +1,28 @@
 import tileNames from "../commons/tileNames";
 
 const standard = {
-  tiles: [
-    "tiles",
-    "tilesAsia",
-    "tilesMania"
-  ],
-  // player atlas name
+  // tile size
+  tileSize: 70,
+  // list of filenames contains tiles
+  tiles: ["tiles", "tilesAsia", "tilesMania"],
+  // player atlas filename
   player: "player",
-  // enemies atlas name
+  // enemies atlas filename
   enemies: "enemies",
-  // list of enemies' names
+  // list of enemies' names inside atlas file
   enemiesNames: [
-    'snailwalk',
-    'slimewalk'
+    {
+      name: "snailwalk",
+    },
+    {
+      name: "slimewalk",
+    },
   ],
+  // connect tile numbers to tile names
   tileNames: tileNames,
-  playerPosition: { x: 30, y: 800 },
+  // default player position on stage
+  playerPosition: { x: 30, y: 870 },
+  // parallax background settings
   background: [
     {
       key: "sky",
@@ -36,7 +42,11 @@ const standard = {
   ],
 };
 
+/**
+ * Levels' definitions
+ */
 export default {
+  conf: standard,
   Level_000: {
     ...standard,
     tileNames: { ...tileNames, EXIT: tileNames.EXIT_SIGN },
@@ -46,5 +56,9 @@ export default {
   Level_003: { ...standard, background: "bcgrAsia.jpeg" },
   Level_004: standard,
   Level_005: standard,
-  Level_006: { ...standard, background: "noce-poce.jpg", playerPosition: { x: 30, y: 300 } },
+  Level_006: {
+    ...standard,
+    background: "noce-poce.jpg",
+    playerPosition: { x: 30, y: 300 },
+  },
 };

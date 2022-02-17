@@ -10,6 +10,8 @@ import resetScore from "../ui/resetScore";
 import increaseLevelNumber from "../commons/increaseLevelNumber";
 import createAlignedBcgr from "../commons/createAlignedBcgr";
 import levelsConf from "../config/levels.conf";
+import { flares, flame, comet, explode } from "../commons/emitters";
+import Bullets from "../gameObjects/Bullets";
 
 export default function create(scene) {
   if (!levelsConf[scene.scene.key]) {
@@ -51,16 +53,9 @@ export default function create(scene) {
     image.setScale(scale).setScrollFactor(0).setDepth(-1);
   }
 
-  // //   scene.add.image(960, 400, 'background');
-  // //   scene.add.image(0, 0, 'background').setOrigin(0, 0).setScale(.85).setDepth(-1);
-
-  // //the width and height value could be the screen width and height
-  // //"background" is the name of your preloaded image
-  // //   scene.background = scene.add.tileSprite(0, 0, scene.sys.canvas.height, scene.sys.canvas.height, "background")
-  // //                             .setDepth(-1)
-  // //                             .setOrigin(0)
-  // //                             .setScrollFactor(0, 1) //this line keeps your background from scrolling outside of camera bounds
-  // //                             .setTilePosition(scene.cameras.main.scrollX);
+  // set particle effects
+  const particles = scene.add.particles("spark");
+  const emitter = comet(particles);
 
   // set sounds
   scene.sound.pauseOnBlur = false;
@@ -96,11 +91,10 @@ export default function create(scene) {
     tilesets.push(scene.map.addTilesetImage(tilesetName, tilesetName));
   });
 
+  // define collisions
   const noCollisionTiles = [tiles.EMPTY, tiles.FLAG_LEFT];
   scene.platform = scene.map.createLayer("platforms", tilesets, 0, 0);
   scene.platform.setCollisionByExclusion(noCollisionTiles, true);
-
-  //   scene.map.createLayer("background", scene.tileset, 0, 0);
 
   scene.player = new Player(
     scene,
@@ -114,10 +108,38 @@ export default function create(scene) {
   scene.infoBox = new InfoBox(scene).collideWith(scene.player.sprite);
   scene.debugger = new Debugger(scene);
 
-  scene.inputs = scene.input.keyboard.createCursorKeys();
+  // set bullet
+  // https://www.codecaptain.io/blog/game-development/shooting-bullets-using-phaser-groups/518
+  // https://www.codecaptain.io/blog/game-development/shooting-bullets-phaser-3-using-arcade-physics-groups/696
+  // https://rexrainbow.github.io/phaser3-rex-notes/docs/site/bullet/
+
+  //   var obj = scene.add.line(400, 300, 30, 0, 0, 0, 0x00cccc).setLineWidth(4, 15);
+  //   var obj = scene.add.image(
+  //     scene.player.sprite.x + levelsConf[scene.scene.key].tileSize,
+  //     scene.player.sprite.y,
+  //     "spark"
+  //   );
+  //   obj.bullet = scene.plugins.get("rexBullet").add(obj, {
+  //     speed: 100,
+  //   });
+  //   obj.body.setSize(30, 30);
+  //   scene.bullet = obj;
+  //   scene.bullet.setCollisionCallback(() => {
+  //     console.log('HIT!')
+  //   });
+
+  scene.bullets = new Bullets(scene, "spark");
+
+  scene.input.on("pointerdown", (pointer) => {
+    scene.bullets.fireBullet(scene.player.sprite.x, scene.player.sprite.y);
+  });
+  scene.physics.add.collider(scene.bullets, scene.enemies, onMeetEnemy, null, this)
 
   // reset camera
   scene.cameras.main.resetFX();
+
+  // define inputs
+  scene.inputs = scene.input.keyboard.createCursorKeys();
 
   //   scene.input.on("pointerdown", function (container) {
   //     console.log(container);
@@ -151,4 +173,9 @@ export default function create(scene) {
   forceEndOfGame.on("up", (event) => {
     scene.scene.start("ScorePage");
   });
+}
+
+function onMeetEnemy(a, b) {
+    console.log('onMeetEnemy', a, b)
+    // console.log(scene.bullets.setCollideWorldBounds(true));
 }

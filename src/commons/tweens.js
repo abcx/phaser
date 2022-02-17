@@ -1,4 +1,4 @@
-export function pulse(scene, item, value = 5, duration = 750) {
+export function pulse(scene, item, value = 7, duration = 750) {
   scene.tweens.timeline({
     targets: item,
     repeat: -1,

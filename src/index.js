@@ -11,7 +11,7 @@ import Level_005 from "./scenes/Level_005.js";
 import Level_006 from "./scenes/Level_006.js";
 import GameStart from "./scenes/GameStart.js";
 import GameOver from "./scenes/GameOver.js";
-import ScorePage from './scenes/ScorePage';
+import ScorePage from "./scenes/ScorePage";
 
 let size = {
   TILE_SIZE: levelsConf.conf.tileSize,

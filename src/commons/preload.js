@@ -46,6 +46,8 @@ export default function preload(scene) {
     `./assets/${levelsConf[scene.scene.key].enemies}_atlas.json`
   );
 
+  scene.load.image('spark', './assets/blue.png');
+
   // load tiles spritesheet
   scene.load.setPath("assets");
 

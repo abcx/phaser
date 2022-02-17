@@ -1,6 +1,7 @@
 import increaseScore from "../ui/increaseScore";
 import gameOver from "../commons/game-over";
 import { getTilesetData, checkGid } from "../commons/checkGid";
+import { flares, flame, comet, explode, stop } from "../commons/emitters";
 import {
   getLayersNames,
   getFrameNamesFromAtlas,
@@ -15,6 +16,7 @@ class Enemy {
 
   constructor(scene) {
     this.scene = scene;
+    this.particles = this.scene.add.particles("spark");
     this.enemies = this.scene.physics.add.group();
     this.collider = this.scene.physics.add.collider(
       this.scene.player.sprite,
@@ -120,7 +122,7 @@ class Enemy {
 
   onBulletHit(bullet, obstacle) {
     bullet.destroy();
-    console.log("ENEMY onBulletHit", bullet, obstacle);
+    // console.log("ENEMY onBulletHit", bullet, obstacle);
     this.die(obstacle);
     return;
   }
@@ -148,6 +150,12 @@ class Enemy {
           this.scene.player.sprite.play("jump");
         }
         this.scene.fx.enemyHit.play();
+
+        // particle effects
+        let emitter = explode(this.particles, enemy);
+        stop(this.scene, emitter);
+
+        // console.log("die", enemy);
       }
     }
   }

@@ -10,11 +10,10 @@ import resetScore from "../ui/resetScore";
 import increaseLevelNumber from "../commons/increaseLevelNumber";
 import createAlignedBcgr from "../commons/createAlignedBcgr";
 import levelsConf from "../config/levels.conf";
-import { flares, flame, comet, explode } from "../commons/emitters";
 import Bullets from "../gameObjects/Bullets";
 
 export default function create(scene) {
-  let soundsOn = false;
+  let soundsOn = true;
 
   if (!levelsConf[scene.scene.key]) {
     return false;
@@ -54,10 +53,6 @@ export default function create(scene) {
     let scale = Math.max(scaleX, scaleY);
     image.setScale(scale).setScrollFactor(0).setDepth(-1);
   }
-
-  // set particle effects
-  const particles = scene.add.particles("spark");
-  const emitter = comet(particles);
 
   // set sounds
   scene.sound.pauseOnBlur = false;
@@ -121,11 +116,15 @@ export default function create(scene) {
   scene.debugger = new Debugger(scene);
 
   // set bullets
+  const bulletsAmount = document.querySelector(".bullets-amount");
+
   document.querySelector(".bullets-amount").innerText =
     levelsConf[scene.scene.key].bulletsQuantity;
 
-  scene.input.on("pointerdown", (pointer) => {
-    scene.bullets.fireBullet(scene.player.sprite.x, scene.player.sprite.y);
+  scene.input.keyboard.on("keyup-ALT", (event) => {
+    if (Number(bulletsAmount.innerText)) {
+      scene.bullets.fireBullet(scene.player.sprite.x, scene.player.sprite.y);
+    }
   });
   scene.physics.add.collider(
     scene.bullets,
@@ -150,8 +149,10 @@ export default function create(scene) {
   });
 
   // keyboard
-  const forceNextLevel = scene.input.keyboard.addKey("N"); // Get key object
-  const forceEndOfGame = scene.input.keyboard.addKey("E"); // Get key object
+  const forceNextLevel = scene.input.keyboard.addKey("N");
+  const forceEndOfGame = scene.input.keyboard.addKey("E");
+
+  console.log("keycodes", Phaser.Input.Keyboard.KeyCodes);
 
   forceNextLevel.on("up", (event) => {
     const L = increaseLevelNumber(scene);
@@ -186,6 +187,7 @@ export default function create(scene) {
 }
 
 const onBulletHit = (bullet, obstacle) => {
-  bullet.destroy();
-  console.log("CREATE onBulletHit", bullet, obstacle);
+  bullet.setActive(false);
+  bullet.setVisible(false);
+  //   console.log("CREATE onBulletHit", bullet, obstacle);
 };

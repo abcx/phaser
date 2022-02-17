@@ -35,16 +35,22 @@ export function comet(particles) {
   });
 }
 
-export function explode(particles) {
+export function explode(particles, target) {
   return particles.createEmitter({
-    x: 400,
-    y: 300,
+    x: target.x,
+    y: target.y,
     speed: { min: -800, max: 800 },
     angle: { min: 0, max: 360 },
-    scale: { start: 0.5, end: 0 },
+    scale: { start: 0.5, end: 0, ease: 'Power3' },
     blendMode: "SCREEN",
     //active: false,
     lifespan: 600,
     gravityY: 800,
+  });
+}
+
+export function stop(scene, emitter, time = 350) {
+  scene.time.delayedCall(time, () => {
+    emitter.stop();
   });
 }

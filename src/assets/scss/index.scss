@@ -23,7 +23,9 @@ body {
     background-size: 110%;
 
     #debug,
+    #sounds,
     label[for="debug"],
+    label[for="sounds"],
     #panel {
       display: none;
     }
@@ -35,14 +37,23 @@ canvas {
   display: block;
 }
 
-label {
+label[for="debug"],
+label[for="sounds"] {
   position: absolute;
   bottom: 10px;
+}
+
+label[for="debug"] {
   left: 10px;
 }
 
+label[for="sounds"] {
+  left: 120px;
+}
+
 .lives,
-.score {
+.score,
+.bullets {
   position: absolute;
   font-size: 21px;
   top: 10px;
@@ -56,6 +67,10 @@ label {
 
 .score {
   right: 200px;
+}
+
+.bullets {
+  right: 370px;
 }
 
 .game-start,

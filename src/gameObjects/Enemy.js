@@ -7,8 +7,8 @@ import {
 } from "../commons/getLayersNames";
 import levelsConf from "../config/levels.conf";
 
-const LEFT = 'LEFT';
-const RIGHT = 'RIGHT';
+const LEFT = "LEFT";
+const RIGHT = "RIGHT";
 
 class Enemy {
   enemiesSpeed = 75;
@@ -20,6 +20,13 @@ class Enemy {
       this.scene.player.sprite,
       this.enemies,
       this.gameOver,
+      null,
+      this
+    );
+    this.colliderBullet = this.scene.physics.add.collider(
+      this.scene.bullets,
+      this.enemies,
+      this.onBulletHit,
       null,
       this
     );
@@ -57,12 +64,15 @@ class Enemy {
           .create(enemy.x, enemy.y - enemy.height, "enemies", enemyType)
           .setName(enemyType)
           .setScale(1.5)
-        //   .setOrigin(0)
+          //   .setOrigin(0)
           .setDepth(-1);
       }
     }
 
+    let idx = 0;
+
     for (const enemy of this.enemies.children.entries) {
+      enemy.eid = idx++;
       enemy.direction = RIGHT;
       enemy.isDed = false;
     }
@@ -70,7 +80,6 @@ class Enemy {
 
   collideWith(gameObject) {
     this.scene.physics.add.collider(this.enemies, gameObject);
-
     return this;
   }
 
@@ -109,26 +118,35 @@ class Enemy {
     gameOver(this.scene, this.collider);
   }
 
-  die() {
+  onBulletHit(bullet, obstacle) {
+    bullet.destroy();
+    console.log("ENEMY onBulletHit", bullet, obstacle);
+    this.die(obstacle);
+    return;
+  }
+
+  die(obstacle) {
     const animNames = Object.keys(this.scene.anims.anims.entries);
     let currentEnemyAnim;
 
     for (const enemy of this.enemies.children.entries) {
-      if (enemy.body.touching.up) {
+      if (enemy.body.touching.up || obstacle.eid === enemy.eid) {
         enemy.isDed = true;
 
         // find proper enemy die anim name
-        currentEnemyAnim = animNames.find(
-          (name) => enemy.name.indexOf(name.split("_")[1]) !== -1
-        );
+        currentEnemyAnim = animNames
+          .find((name) => enemy.name.indexOf(name.split("_")[1]) !== -1)
+          .replace("Run", "Die");
 
-        enemy.play(currentEnemyAnim.replace("Run", "Die"), true);
+        enemy.play(currentEnemyAnim, true);
         enemy.on("animationcomplete", () => enemy.destroy());
 
         increaseScore(1);
 
-        this.scene.player.sprite.setVelocity(0, -350);
-        this.scene.player.sprite.play("jump");
+        if (!obstacle) {
+          this.scene.player.sprite.setVelocity(0, -350);
+          this.scene.player.sprite.play("jump");
+        }
         this.scene.fx.enemyHit.play();
       }
     }

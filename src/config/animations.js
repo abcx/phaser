@@ -45,8 +45,8 @@ export default (scene) => {
     });
 
     scene.anims.create({
-        key: `enemyDie_${enemyName}`,
-        frames: [{ key: "enemies", frame: `${enemyName}${idx + 1}` }],
+        key: `enemyDie_${enemyName.name}`,
+        frames: [{ key: "enemies", frame: `${enemyName.name}${idx + 1}` }],
         frameRate: 10,
         hideOnComplete: true,
       });

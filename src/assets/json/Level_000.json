@@ -52,7 +52,7 @@
                  "type":"",
                  "visible":true,
                  "width":70,
-                 "x":702.333333333333,
+                 "x":702.333,
                  "y":907
                 }, 
                 {
@@ -64,7 +64,7 @@
                  "type":"",
                  "visible":true,
                  "width":70,
-                 "x":626.333333333333,
+                 "x":626.333,
                  "y":903
                 }, 
                 {
@@ -76,8 +76,8 @@
                  "type":"",
                  "visible":true,
                  "width":70,
-                 "x":695.666666666667,
-                 "y":488.333333333333
+                 "x":695.667,
+                 "y":488.333
                 }, 
                 {
                  "gid":24,
@@ -89,7 +89,19 @@
                  "visible":true,
                  "width":70,
                  "x":769,
-                 "y":484.333333333333
+                 "y":484.333
+                }, 
+                {
+                 "gid":2,
+                 "height":70,
+                 "id":81,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":70,
+                 "x":419.666666666667,
+                 "y":907
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -136,7 +148,7 @@
                  "visible":true,
                  "width":70,
                  "x":769,
-                 "y":905.666666666667
+                 "y":905.667
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -193,7 +205,7 @@
                  "type":"",
                  "visible":true,
                  "width":70,
-                 "x":491.666666666667,
+                 "x":491.667,
                  "y":907
                 }],
          "opacity":1,
@@ -309,7 +321,7 @@
          "y":0
         }],
  "nextlayerid":11,
- "nextobjectid":81,
+ "nextobjectid":82,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.7.2",

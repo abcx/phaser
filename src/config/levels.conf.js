@@ -40,6 +40,8 @@ const standard = {
       scroll: 0.5,
     },
   ],
+  // quantity of bullets
+  bulletsQuantity: 5
 };
 
 /**

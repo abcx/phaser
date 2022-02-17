@@ -14,6 +14,8 @@ import { flares, flame, comet, explode } from "../commons/emitters";
 import Bullets from "../gameObjects/Bullets";
 
 export default function create(scene) {
+  let soundsOn = false;
+
   if (!levelsConf[scene.scene.key]) {
     return false;
   }
@@ -74,11 +76,15 @@ export default function create(scene) {
   // start play game music
   if (!scene.sound.locked) {
     // already unlocked so play
-    scene.fx.musicGame.play();
+    if (soundsOn) {
+      scene.fx.musicGame.play();
+    }
   } else {
     // wait for 'unlocked' to fire and then play
     scene.sound.once(Phaser.Sound.Events.UNLOCKED, () => {
-      scene.fx.musicGame.play();
+      if (soundsOn) {
+        scene.fx.musicGame.play();
+      }
     });
   }
 
@@ -101,6 +107,12 @@ export default function create(scene) {
     levelsConf[scene.scene.key].playerPosition.x,
     levelsConf[scene.scene.key].playerPosition.y
   ).collideWith(scene.platform);
+
+  scene.bullets = new Bullets(
+    scene,
+    "spark",
+    levelsConf[scene.scene.key].bulletsQuantity
+  );
   scene.enemies = new Enemy(scene).collideWith(scene.platform);
   scene.coins = new Coin(scene).collideWith(scene.player.sprite);
   scene.diamonds = new Diamond(scene).collideWith(scene.player.sprite);
@@ -108,32 +120,20 @@ export default function create(scene) {
   scene.infoBox = new InfoBox(scene).collideWith(scene.player.sprite);
   scene.debugger = new Debugger(scene);
 
-  // set bullet
-  // https://www.codecaptain.io/blog/game-development/shooting-bullets-using-phaser-groups/518
-  // https://www.codecaptain.io/blog/game-development/shooting-bullets-phaser-3-using-arcade-physics-groups/696
-  // https://rexrainbow.github.io/phaser3-rex-notes/docs/site/bullet/
-
-  //   var obj = scene.add.line(400, 300, 30, 0, 0, 0, 0x00cccc).setLineWidth(4, 15);
-  //   var obj = scene.add.image(
-  //     scene.player.sprite.x + levelsConf[scene.scene.key].tileSize,
-  //     scene.player.sprite.y,
-  //     "spark"
-  //   );
-  //   obj.bullet = scene.plugins.get("rexBullet").add(obj, {
-  //     speed: 100,
-  //   });
-  //   obj.body.setSize(30, 30);
-  //   scene.bullet = obj;
-  //   scene.bullet.setCollisionCallback(() => {
-  //     console.log('HIT!')
-  //   });
-
-  scene.bullets = new Bullets(scene, "spark");
+  // set bullets
+  document.querySelector(".bullets-amount").innerText =
+    levelsConf[scene.scene.key].bulletsQuantity;
 
   scene.input.on("pointerdown", (pointer) => {
     scene.bullets.fireBullet(scene.player.sprite.x, scene.player.sprite.y);
   });
-  scene.physics.add.collider(scene.bullets, scene.enemies, onMeetEnemy, null, this)
+  scene.physics.add.collider(
+    scene.bullets,
+    scene.platform,
+    onBulletHit,
+    null,
+    this
+  );
 
   // reset camera
   scene.cameras.main.resetFX();
@@ -173,9 +173,19 @@ export default function create(scene) {
   forceEndOfGame.on("up", (event) => {
     scene.scene.start("ScorePage");
   });
+
+  // manage sound
+  document.querySelector("#sounds").addEventListener("click", (e) => {
+    soundsOn = e.target.checked;
+    if (soundsOn) {
+      scene.fx.musicGame.stop();
+    } else {
+      scene.fx.musicGame.play();
+    }
+  });
 }
 
-function onMeetEnemy(a, b) {
-    console.log('onMeetEnemy', a, b)
-    // console.log(scene.bullets.setCollideWorldBounds(true));
-}
+const onBulletHit = (bullet, obstacle) => {
+  bullet.destroy();
+  console.log("CREATE onBulletHit", bullet, obstacle);
+};

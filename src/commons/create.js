@@ -11,14 +11,44 @@ import increaseLevelNumber from "../commons/increaseLevelNumber";
 import createAlignedBcgr from "../commons/createAlignedBcgr";
 import levelsConf from "../config/levels.conf";
 import Bullets from "../gameObjects/Bullets";
+import Elevator from "../gameObjects/Elevator";
+
+let soundsOn = true;
 
 export default function create(scene) {
-  let soundsOn = true;
+  let tilesets = [];
 
   if (!levelsConf[scene.scene.key]) {
     return false;
   }
 
+  background(scene);
+  sounds(scene);
+
+  // prepare scene
+  scene.map = scene.make.tilemap({ key: scene.scene.key });
+
+  levelsConf[scene.scene.key].tiles.map((tilesetName) => {
+    tilesets.push(scene.map.addTilesetImage(tilesetName, tilesetName));
+  });
+
+  collisions(scene, tilesets);
+  bullets(scene);
+
+  // set camera
+  //   scene.cameras.main.resetFX();
+  scene.cameras.main.fadeIn(250);
+
+  inputs(scene);
+}
+
+const onBulletHit = (bullet, obstacle) => {
+  bullet.setActive(false);
+  bullet.setVisible(false);
+  //   console.log("CREATE onBulletHit", bullet, obstacle);
+};
+
+const background = (scene) => {
   const width = scene.scale.width;
   const height = scene.scale.height;
   const totalWidth = width * 10;
@@ -53,7 +83,9 @@ export default function create(scene) {
     let scale = Math.max(scaleX, scaleY);
     image.setScale(scale).setScrollFactor(0).setDepth(-1);
   }
+};
 
+const sounds = (scene) => {
   // set sounds
   scene.sound.pauseOnBlur = false;
   scene.fx = {};
@@ -82,16 +114,9 @@ export default function create(scene) {
       }
     });
   }
+};
 
-  // prepare scene
-  scene.map = scene.make.tilemap({ key: scene.scene.key });
-
-  let tilesets = [];
-
-  levelsConf[scene.scene.key].tiles.map((tilesetName) => {
-    tilesets.push(scene.map.addTilesetImage(tilesetName, tilesetName));
-  });
-
+const collisions = (scene, tilesets) => {
   // define collisions
   const noCollisionTiles = [tiles.EMPTY, tiles.FLAG_LEFT];
   scene.platform = scene.map.createLayer("platforms", tilesets, 0, 0);
@@ -113,8 +138,11 @@ export default function create(scene) {
   scene.diamonds = new Diamond(scene).collideWith(scene.player.sprite);
   scene.flag = new Flag(scene).collideWith(scene.player.sprite);
   scene.infoBox = new InfoBox(scene).collideWith(scene.player.sprite);
+  scene.elevators = new Elevator(scene).collideWith(scene.player.sprite);
   scene.debugger = new Debugger(scene);
+};
 
+const bullets = (scene) => {
   // set bullets
   const bulletsAmount = document.querySelector(".bullets-amount");
 
@@ -133,10 +161,9 @@ export default function create(scene) {
     null,
     this
   );
+};
 
-  // reset camera
-  scene.cameras.main.resetFX();
-
+const inputs = (scene) => {
   // define inputs
   scene.inputs = scene.input.keyboard.createCursorKeys();
 
@@ -152,7 +179,7 @@ export default function create(scene) {
   const forceNextLevel = scene.input.keyboard.addKey("N");
   const forceEndOfGame = scene.input.keyboard.addKey("E");
 
-  console.log("keycodes", Phaser.Input.Keyboard.KeyCodes);
+  console.log("KEYCODES", Phaser.Input.Keyboard.KeyCodes);
 
   forceNextLevel.on("up", (event) => {
     const L = increaseLevelNumber(scene);
@@ -184,10 +211,4 @@ export default function create(scene) {
       scene.fx.musicGame.play();
     }
   });
-}
-
-const onBulletHit = (bullet, obstacle) => {
-  bullet.setActive(false);
-  bullet.setVisible(false);
-  //   console.log("CREATE onBulletHit", bullet, obstacle);
 };

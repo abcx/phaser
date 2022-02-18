@@ -41,7 +41,14 @@ const standard = {
     },
   ],
   // quantity of bullets
-  bulletsQuantity: 5
+  bulletsQuantity: 5,
+  // elevators
+  elevators: [
+    {
+      speed: 210,
+      distance: 900,
+    },
+  ],
 };
 
 /**

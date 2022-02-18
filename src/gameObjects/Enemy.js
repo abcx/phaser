@@ -67,7 +67,7 @@ class Enemy {
           .setName(enemyType)
           .setScale(1.5)
           //   .setOrigin(0)
-          .setDepth(-1);
+          .setDepth(0);
       }
     }
 

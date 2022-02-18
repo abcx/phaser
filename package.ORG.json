@@ -3,10 +3,11 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "start": "npm run build",
-    "build": "PORT=process.env.PORT node scripts/start.js",
+    "start": "npm run clean && npm run build",
+    "build": "node scripts/start.js",
+    "clean": "del-cli --force ./build ./.cache",
     "dev": "parcel watch *.js, *.scss, *.json",
-    "omm": "parcel index.html --no-autoinstall --no-cache --open --out-dir build --port 5000"
+    "server": "browser-sync start --server --no-notify --files \".\""
   },
   "keywords": [],
   "author": "",

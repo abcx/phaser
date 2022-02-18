@@ -1,8 +1,7 @@
 {
-  "name": "phaser-mario",
+  "name": "phaser",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
   "scripts": {
     "start": "npm run clean && npm run build",
     "build": "node scripts/start.js",

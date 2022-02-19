@@ -32,6 +32,7 @@ class Elevator {
 
     let idx = 0;
     let config;
+    let horizontal;
 
     for (const elevator of this.elevators.children.entries) {
       elevator.body.setAllowGravity(false);
@@ -41,6 +42,8 @@ class Elevator {
       } else {
         config = levelsConf[scene.scene.key].elevators[0];
       }
+      horizontal = config.mode === "horizontal";
+      elevator.mode = config.mode;
 
       this.scene.tweens.timeline({
         targets: elevator.body.velocity,
@@ -48,7 +51,8 @@ class Elevator {
         tweens: [
           {
             // speed
-            y: -config.speed,
+            x: horizontal ? config.speed : 0,
+            y: !horizontal ? -config.speed : 0,
             // distance
             duration: config.distance,
             // easing
@@ -56,7 +60,8 @@ class Elevator {
           },
           {
             // speed
-            y: config.speed,
+            x: horizontal ? -config.speed : 0,
+            y: !horizontal ? config.speed : 0,
             // distance
             duration: config.distance,
             // easing
@@ -81,16 +86,26 @@ class Elevator {
   }
 
   collide(player) {
-    for (const elevator of this.elevators.children.entries) {
-      if (
-        elevator.body.moves &&
-        elevator.body.touching.up &&
-        player.body.touching.down
-      ) {
-        player.setGravityY(2000);
-        console.log(player.body.touching.down, elevator.body.touching.up);
-      }
-    }
+    // const { gravity } = this.scene.physics.world;
+
+    // for (const elevator of this.elevators.children.entries) {
+    //   if (
+    //     elevator.body.moves &&
+    //     elevator.body.touching.up &&
+    //     player.body.touching.down
+    //   ) {
+    //     // player.setGravityY(10000);
+
+    //     if (elevator.mode === 'horizontal') {
+    //         player.setVelocityX(elevator.body.velocity.x);
+    //         console.log(player, elevator, player.body.velocity.x);
+    //     } else {
+
+    //     }
+    //   } else {
+    //     // player.setGravityY(gravity.y);
+    //   }
+    // }
   }
 }
 

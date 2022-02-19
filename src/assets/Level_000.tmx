@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.5" tiledversion="1.7.2" orientation="orthogonal" renderorder="right-down" width="80" height="14" tilewidth="70" tileheight="70" infinite="0" nextlayerid="12" nextobjectid="83">
+<map version="1.5" tiledversion="1.7.2" orientation="orthogonal" renderorder="right-down" width="80" height="14" tilewidth="70" tileheight="70" infinite="0" nextlayerid="12" nextobjectid="85">
  <editorsettings>
-  <export target="json/level_000.json" format="json"/>
+  <export target="json/Level_000.json" format="json"/>
  </editorsettings>
  <tileset firstgid="1" name="tiles" tilewidth="70" tileheight="70" tilecount="23" columns="1">
   <image source="img/tiles.png" trans="ff00ff" width="70" height="1610"/>
@@ -58,6 +58,7 @@
  </objectgroup>
  <objectgroup id="11" name="elevators">
   <object id="82" gid="29" x="349" y="952.333" width="70" height="70"/>
+  <object id="84" gid="29" x="94.3333" y="949.667" width="70" height="70"/>
  </objectgroup>
  <objectgroup id="6" name="diamonds">
   <object id="68" gid="10" x="213" y="908.333" width="70" height="70"/>

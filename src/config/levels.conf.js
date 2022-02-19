@@ -45,8 +45,14 @@ const standard = {
   // elevators
   elevators: [
     {
-      speed: 210,
-      distance: 900,
+      mode: "vertical",
+      speed: 140,
+      distance: 1400,
+    },
+    {
+      mode: "horizontal",
+      speed: 100,
+      distance: 2600,
     },
   ],
 };

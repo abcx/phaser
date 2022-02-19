@@ -93,7 +93,7 @@ class Player {
 
     if (input.space.isDown && this.sprite.body.onFloor()) {
       this.sprite
-        .setGravityY(this.scene.game.config.physics.arcade.gravity.y)
+        // .setGravityY(this.scene.game.config.physics.arcade.gravity.y)
         .setVelocityY(-700);
       this.sprite.play("jump", true);
     }

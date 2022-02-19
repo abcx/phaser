@@ -3,10 +3,14 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "start": "npm run build",
-    "build": "PORT=process.env.PORT node scripts/start.js",
-    "dev": "parcel watch *.js, *.scss, *.json",
-    "omm": "parcel index.html --no-autoinstall --no-cache --open --out-dir build --port 5000"
+    "start": "npm run clean && npm run build",
+    "build": "node scripts/start.js",
+    "clean": "del-cli --force ./build ./.cache",
+    "build2": "PORT=process.env.PORT node scripts/start.js",
+    "dev": "parcel watch *.js, *.scss, *.json"
+  },
+  "engines": {
+    "node": "14.x"
   },
   "keywords": [],
   "author": "",

@@ -132,7 +132,7 @@ class Enemy {
     let currentEnemyAnim;
 
     for (const enemy of this.enemies.children.entries) {
-      if (enemy.body.touching.up || obstacle.eid === enemy.eid) {
+      if (enemy.body.touching.up || (obstacle && obstacle.eid === enemy.eid)) {
         enemy.isDed = true;
 
         // find proper enemy die anim name

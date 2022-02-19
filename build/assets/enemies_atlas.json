@@ -1,0 +1,60 @@
+{
+    "frames": [
+        {
+            "filename": "slimewalk1",
+            "frame": {
+                "x": 0,
+                "y": 0,
+                "w": 50,
+                "h": 28
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "slimewalk2",
+            "frame": {
+                "x": 0,
+                "y": 28,
+                "w": 51,
+                "h": 26
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "snailwalk1",
+            "frame": {
+                "x": 0,
+                "y": 54,
+                "w": 54,
+                "h": 31
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "snailwalk2",
+            "frame": {
+                "x": 0,
+                "y": 85,
+                "w": 57,
+                "h": 31
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        }
+    ],
+    "meta": {
+        "description": "Atlas generado con Atlas Packer Phaser3",
+        "web": "https://gammafp.github.io/atlas-packer-phaser/"
+    }
+}

@@ -68,7 +68,7 @@ export default {
   },
   Level_001: standard,
   Level_002: { ...standard, background: "noce-poce.jpg" },
-  Level_003: { ...standard, background: "bcgrAsia.jpeg" },
+  Level_003: { ...standard, background: "noce-poce.jpg" },
   Level_004: standard,
   Level_005: standard,
   Level_006: {

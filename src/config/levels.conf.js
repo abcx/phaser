@@ -76,4 +76,10 @@ export default {
     background: "noce-poce.jpg",
     playerPosition: { x: 30, y: 300 },
   },
+  Level_007: standard,
+  Level_008: {
+    ...standard,
+    background: "noce-poce.jpg",
+    playerPosition: { x: 30, y: 650 },
+  }
 };

@@ -9,6 +9,8 @@ import Level_003 from "./scenes/Level_003.js";
 import Level_004 from "./scenes/Level_004.js";
 import Level_005 from "./scenes/Level_005.js";
 import Level_006 from "./scenes/Level_006.js";
+import Level_007 from "./scenes/Level_007.js";
+import Level_008 from "./scenes/Level_008.js";
 import GameStart from "./scenes/GameStart.js";
 import GameOver from "./scenes/GameOver.js";
 import ScorePage from "./scenes/ScorePage";
@@ -60,6 +62,8 @@ const config = {
     Level_004,
     Level_005,
     Level_006,
+    Level_007,
+    Level_008,
     ScorePage,
     GameOver,
   ],
